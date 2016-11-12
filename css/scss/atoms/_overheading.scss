@@ -1,0 +1,25 @@
+.overheading {
+    display:block;
+    margin:0 auto 20px auto;
+    color:$color-dark;
+    text-transform:uppercase;
+    font-size:16px;
+    font-weight:400;
+    text-align:center;
+
+    @media (min-width:$bp-phablet) {
+		font-size:18px;
+
+		&:before {
+			display:none;
+		}
+    }
+
+    &__label {
+        display:inline-block;
+        position:relative;
+        z-index:1;
+        padding:0 20px;
+        background:#FFF;
+    }
+}
