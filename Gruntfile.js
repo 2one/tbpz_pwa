@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     var env = grunt.option('env') || "dev";
 
     var timestamp = Date.now();
-    var assetsPath = (env == 'dev') ? './' : '/special/timeline/';
+    var assetsPath = (env == 'dev') ? './' : '/tbpz_pwa/';
 
     console.log(" ");
 
