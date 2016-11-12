@@ -1,0 +1,23 @@
+<article class="article"
+         ng-repeat="(index, article) in articles | orderBy:order">
+    <div class="article__colDate">
+        <div class="article__colDateWrapper">
+            <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+        </div>
+    </div>
+    <div class="article__colContent">
+        <div class="article__colContentWrapper"
+            ng-click="go('/' + article.slug)">
+            <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+            <div class="banner">
+                <div class="banner__image"
+                     ng-style="(article.featured_image.source) ? {'background-image':'url('+ article.featured_image.attachment_meta.sizes.medium.url +')'} : {}"></div>
+                <div class="banner__text">
+                    <h2 class="heading heading--2"
+                        ng-if="article.title"
+                        ng-bind-html="article.title"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

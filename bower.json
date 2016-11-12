@@ -1,0 +1,15 @@
+{
+  "name": "Timeline",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-sanitize": "1.5.x",
+    "angular-cookies": "1.5.x",
+    "angular-touch": "1.5.x",
+    "angular-i18n": "1.5.x",
+    "jquery": "~1.12.x"
+  },
+  "devDependencies": {
+    "angular-route": "~1.5.8"
+  }
+}

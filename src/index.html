@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr-FR" ng-app="app" ng-controller="MainCtrl">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <base href="/" />
+        <title>The BackPackerz | Blog Rap & Culture Hip-Hop</title>
+        <meta name="description" content="Le site référence sur le rap et la culture Hip-Hop: dossiers, chroniques albums, interviews, concerts et actualité rap et Hip-Hop.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="The Backpackerz"/>
+        <meta property="og:title" content="The BackPackerz | Blog Rap & Culture Hip-Hop" />
+        <meta property="og:url" content="http://thebackpackerz.com/" />
+        <meta property="og:description" content="Le site référence sur le rap et la culture Hip-Hop: dossiers, chroniques albums, interviews, concerts et actualité rap et Hip-Hop." />
+        <meta property="og:image" content="http://thebackpackerz.com/wp-content/uploads/2015/05/nouvelle-version-the-backpackerz-cover.jpg" />
+        <meta property="article:publisher" content="https://www.facebook.com/TheBackPackerzOfficial" />
+        <meta property="article:author" content="https://www.facebook.com/TheBackPackerzOfficial" />
+        <meta name="twitter:site" content="@TheBackPackerz" />
+        <meta name="twitter:creator" content="@TheBackPackerz" />
+        <link rel="canonical" href="http://thebackpackerz.com/" />
+		<!-- build:template
+		<link rel="stylesheet" type="text/css" href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" />
+		/build -->
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="apple-mobile-web-app-title" content="TBPZ">
+        <meta name="application-name" content="TBPZ">
+        <meta name="theme-color" content="#ff0000">
+	</head>
+
+	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, page: page}">
+
+		<nav nav-g class="navG"></nav>
+
+        <header class="header is-reduced">
+            <a href class="header__burger fa fa-bars" onclick="ga('send', 'event', 'burger', 'click', 'header buttons')"
+                ng-click="toggleNav()"></a>
+            <a href="/" class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
+                ng-click="clickLogo($event)"></a>
+        </header>
+
+		<div class="container">
+
+			<section class="content"
+                     ng-view
+                     autoscroll="true">
+			</section>
+
+		</div>
+
+        <div class="loader"></div>
+
+		<!-- build:template
+		<script src="<%=assetsPath%>js/vendors.min.js"></script>
+		<script src="<%=assetsPath%>js/libs.js"></script>
+		<script src="<%=assetsPath%>js/app.js?<%=timestamp%>"></script>
+		/build -->
+	</body>
+</html>

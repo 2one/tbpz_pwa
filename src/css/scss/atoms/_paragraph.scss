@@ -1,0 +1,20 @@
+.paragraph {
+    font-family:'Roboto';
+    color:$color-dark;
+    font-size:15px;
+    line-height:20px;
+    text-align:justify;
+    overflow:hidden;
+    background:#FFF;
+
+    &--oneline {
+        font-size: 18px;
+        font-style:italic;
+        text-align:center;
+    }
+
+    p {
+    	margin:0;
+    }
+
+}
