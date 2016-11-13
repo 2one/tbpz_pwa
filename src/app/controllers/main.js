@@ -1,12 +1,9 @@
 (function() {
 
-	app.controller('MainCtrl', function($scope, $rootScope, $location, $document, $timeout, $q, datasSce) {
+	app.controller('MainCtrl', function($scope, $rootScope, $location) {
 
 		var items,
-			dataPromise = {},
-			documentHeight = $document.height(),
-			documentWidth = $document.width(),
-			scrollTop = $document.scrollTop();
+			dataPromise = {};
 
 		$scope.dateToTimestamp = function(date, locale) {
 			if (date) {
@@ -26,6 +23,10 @@
 				return Math.round(new Date(year, month, day, hours, minutes, seconds, milliseconds));
 			}
 		};
+
+        $scope.toggleNav = function() {
+            $scope.isNavigating = $scope.isNavigating ? false : true;
+        };
 
         $scope.go = function(path, $event) {
             $location.path(path);

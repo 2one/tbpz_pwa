@@ -1,13 +1,19 @@
 app.service('datasSce', function($http) {
     var promise = {};
     return {
-        getArticles: function() {
-            if (!promise['articles']) {
-                promise['articles'] = $http.get(config.postsApiUrl).then(function(res) {
+        getArticles: function(slug, page) {
+            if (!slug) {
+                var slug = '';
+            }
+            if (!page) {
+                var page = 1;
+            }
+            if (!promise['articles_' + slug + '_page' + page]) {
+                promise['articles_' + slug + '_page' + page] = $http.get(config.postsApiUrl.replace('{slug}', slug).replace('{page}', page)).then(function(res) {
                     return res.data;
                 });
             }
-            return promise['articles'];
+            return promise['articles_' + slug + '_page' + page];
         },
         getArticleById: function(id) {
             if (!promise['article_'+ id]) {
@@ -24,14 +30,6 @@ app.service('datasSce', function($http) {
                 });
             }
             return promise['article_'+ slug];
-        },
-        getCategoryArticles: function(slug) {
-            if (!promise['category_' + slug]) {
-                promise['category_' + slug] = $http.get(config.categoryPostsApiUrl.replace('{slug}', slug)).then(function(res) {
-                    return res.data;
-                });
-            }
-            return promise['category_' + slug];
         },
         getNavG: function() {
             if (!promise['nav']) {

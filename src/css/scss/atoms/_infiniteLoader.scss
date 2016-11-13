@@ -1,0 +1,20 @@
+.infiniteLoader {
+    display:block;
+    position:relative;
+    z-index:2;
+    line-height:50px;
+    text-align:center;
+
+    @media (min-width:$bp-phone) {
+        margin-left:20%;
+    }
+
+    &:before {
+        display:inline-block;
+        font-size:32px;
+        font-family: FontAwesome;
+        content:'\f1ce';
+        color:$color-red;
+        animation:rotate360 1s linear infinite;
+    }
+}

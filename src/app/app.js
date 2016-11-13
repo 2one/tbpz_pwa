@@ -1,6 +1,4 @@
 var app;
-var documentWidth = document.documentElement.clientWidth;
-var documentHeight = document.documentElement.clientHeight;
 
 (function() {
 
@@ -11,24 +9,24 @@ var documentHeight = document.documentElement.clientHeight;
 
         $routeProvider.
         when('/', {
-            page: 'home',
+            slug: 'home',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'HomeCtrl'
+            controller: 'ArticlesCtrl'
         }).
         when('/article/:articleId', {
-            page: 'article',
+            slug: 'article',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
         when('/:articleSlug', {
-            page: 'article',
+            slug: 'article',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
         when('/category/:categorySlug', {
-            page: 'category',
+            slug: 'category',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'CategoryCtrl'
+            controller: 'ArticlesCtrl'
         }).
         otherwise({
             redirectTo: '/'
@@ -40,9 +38,7 @@ var documentHeight = document.documentElement.clientHeight;
         $scope.config = config;
         $scope.appReady = false;
         $scope.isNavigating = false;
-        $scope.toggleNav = function() {
-            $scope.isNavigating = $scope.isNavigating ? false : true;
-        };
+        $scope.loadingNext = false;
 
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
@@ -50,26 +46,18 @@ var documentHeight = document.documentElement.clientHeight;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-            $scope.page = current.$$route.page;
+            $scope.slug = current.$$route.slug;
         });
 
         $scope.$on('$routeChangeError', function (event, current, previous) {
         });
 
-		$scope.documentHeight = documentHeight;
-		angular.element(window).bind('resize', function() {
-			documentWidth = document.documentElement.clientWidth;
-		    documentHeight = document.documentElement.clientHeight;
-		    $scope.documentHeight = documentHeight;
-		    $scope.$apply();
-		});
-
 	}]);
 
-    if ('serviceWorker' in navigator) {
+    /*if ('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./sw.js')
             .then(function() { console.log('Service Worker Registered'); });
-    }
+    }*/
 
 })();
