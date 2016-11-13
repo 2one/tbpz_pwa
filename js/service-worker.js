@@ -14,15 +14,15 @@
 
 var cacheName = 'TBPZPWA-1.0.0';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/js/vendors.min.js',
-  '/js/libs.js',
-  '/js/app.js',
-  '/css/style.min.css',
-  '/img/logo.png',
-  '/img/loader-intro.gif',
-  '/img/favicon.ico'
+  './',
+  './index.html',
+  './js/vendors.min.js',
+  './js/libs.js',
+  './js/app.js',
+  './css/style.min.css',
+  './img/logo.png',
+  './img/loader-intro.gif',
+  './img/favicon.ico'
 ];
 
 self.addEventListener('install', function(e) {
