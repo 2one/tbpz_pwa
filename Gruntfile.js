@@ -18,10 +18,6 @@ module.exports = function(grunt) {
         copy: {
             default: {
                 files: [{
-                    src: ['README.md'],
-                    dest: 'dist/README.md'
-                },
-                {
                     expand: true,
                     cwd: 'src',
                     src: ['**', '**/*', '!iframe.html'],
@@ -128,7 +124,8 @@ module.exports = function(grunt) {
                 },
                 options: {
                     watchTask: true,
-                    server: './dist'
+                    server: './dist'/*,
+                    https: true*/
                 }
             }
         },
