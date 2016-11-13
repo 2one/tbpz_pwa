@@ -25,7 +25,7 @@
 		};
 
         $scope.toggleNav = function() {
-            $scope.isNavigating = $scope.isNavigating ? false : true;
+            $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
         };
 
         $scope.go = function(path, $event) {
