@@ -5,7 +5,7 @@ var config = {
     categoryPostsApiUrl: '//thebackpackerz.com/wp-json/posts?filter[category_name]={slug}&filter[posts_per_page]=5',
     postApiUrl: '//thebackpackerz.com/wp-json/posts?filter[name]={slug}',
     singlepostApiUrl: '//thebackpackerz.com/wp-json/posts/{ID}',
-	navApiUrl: '//www.thebackpackerz.com/wp-json/posts/types/posts/taxonomies/category/terms'
+	navApiUrl: '//thebackpackerz.com/wp-json/posts/types/posts/taxonomies/category/terms'
 };
 ;
 var app;
@@ -75,6 +75,12 @@ var documentHeight = document.documentElement.clientHeight;
 		});
 
 	}]);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('./js/service-worker.js')
+            .then(function() { console.log('Service Worker Registered'); });
+    }
 
 })();
 ;
