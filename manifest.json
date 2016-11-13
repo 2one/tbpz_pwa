@@ -22,7 +22,7 @@
       "sizes": "256x256",
       "type": "image/png"
     }],
-  "start_url": "/tpbz_app/",
+  "start_url": "/tpbz_pwa/",
   "display": "standalone",
   "background_color": "#222421",
   "theme_color": "#b22d2d",
