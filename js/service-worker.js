@@ -14,15 +14,15 @@
 
 var cacheName = 'TBPZPWA-1.0.0';
 var filesToCache = [
-  '/tpbz_pwa/',
-  '/tpbz_pwa/index.html',
-  '/tpbz_pwa/js/vendors.min.js',
-  '/tpbz_pwa/js/libs.js',
-  '/tpbz_pwa/js/app.js',
-  '/tpbz_pwa/css/style.min.css',
-  '/tpbz_pwa/img/logo.png',
-  '/tpbz_pwa/img/loader-intro.gif',
-  '/tpbz_pwa/img/favicon.ico'
+  '/tbpz_pwa/',
+  '/tbpz_pwa/index.html',
+  '/tbpz_pwa/js/vendors.min.js',
+  '/tbpz_pwa/js/libs.js',
+  '/tbpz_pwa/js/app.js',
+  '/tbpz_pwa/css/style.min.css',
+  '/tbpz_pwa/img/logo.png',
+  '/tbpz_pwa/img/loader-intro.gif',
+  '/tbpz_pwa/img/favicon.ico'
 ];
 
 self.addEventListener('install', function(e) {
