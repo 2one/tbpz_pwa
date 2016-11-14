@@ -1,5 +1,5 @@
 {
-  "name": "TBPZ PWA",
+  "name": "tbpz_app",
   "version": "1.0.0",
   "devDependencies": {
     "bower": "",
@@ -20,7 +20,7 @@
     "grunt-htmlhint": "^0.4.1",
     "grunt-lintspaces": "^0.7.0",
     "grunt-notify": "^0.4.1",
-    "grunt-processhtml": "0.3.3"
+    "grunt-processhtml": "^0.4.1"
   },
   "scripts": {
     "deploy": "grunt deploy"

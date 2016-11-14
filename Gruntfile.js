@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [{
-                    src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery-migrate/jquery-migrate.min.js','bower_components/angular/angular.min.js', 'bower_components/angular-i18n/angular-locale_fr-fr.js','bower_components/angular-*/*.min.js'],
+                    src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery-migrate/jquery-migrate.min.js','bower_components/angular/angular.min.js','bower_components/angular-*/*.min.js'],
                     dest: 'dist/js/vendors.min.js'
                 },
                 {
@@ -214,7 +214,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
     grunt.registerTask('deploy', ['publish', /*'ftp-deploy', */ 'gh-pages']);
-    grunt.registerTask('publish', ['clean', 'html', 'css', 'js'/*, 'test'*/]);
+    grunt.registerTask('publish', ['clean', 'css', 'js', 'html'/*, 'test'*/]);
     grunt.registerTask('serve', ['browserSync', 'watch']);
     grunt.registerTask('default', ['publish', 'serve']);
 

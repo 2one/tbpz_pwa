@@ -29,8 +29,8 @@
         <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="application-name" content="TBPZ">
         <meta name="theme-color" content="#222421">
-        <!-- build:template
-        <link rel="stylesheet" type="text/css" href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" />
+        <!-- build:css inline style.min.css
+        <link rel="stylesheet" type="text/css" href="../dist/css/style.min.css" />
         /build -->
 	</head>
 
@@ -56,10 +56,10 @@
 
         <div class="loader"></div>
 
-		<!-- build:template
-		<script src="<%=assetsPath%>js/vendors.min.js"></script>
-		<script src="<%=assetsPath%>js/libs.js"></script>
-		<script src="<%=assetsPath%>js/app.js?<%=timestamp%>"></script>
-		/build -->
+        <!-- build:js inline scripts.min.js
+        <script src="../dist/js/vendors.min.js"></script>
+		<script src="../dist/js/libs.js"></script>
+		<script src="../dist/js/app.js"></script>
+        /build -->
 	</body>
 </html>
