@@ -5,14 +5,15 @@
         var windowHeight = document.documentElement.clientHeight,
             documentHeight = $document.height(),
             scrollTop = $document.scrollTop(),
-            slug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '';
+            categorySlug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '',
+            searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
         $scope.articles = [];
         $scope.page = 1;
         $scope.order = '-date';
 
         $scope.load = function () {
-            dataPromise = datasSce.getArticles(slug, $scope.page).then(function(datas) {
+            dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
                 $scope.articles = $scope.articles.concat(datas);console.log("articles:", $scope.articles);
                 $rootScope.appReady = true;
                 $scope.loadingNext = false;

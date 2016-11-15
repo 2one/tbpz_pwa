@@ -96,11 +96,11 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['src/**/*.scss'],
-                tasks: ['css']
+                tasks: ['css', 'processhtml']
             },
             js: {
                 files: ['src/**/*.js'],
-                tasks: ['js']
+                tasks: ['js', 'processhtml']
             },
             json: {
                 files: ['src/**/*.json'],

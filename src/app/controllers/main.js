@@ -5,6 +5,8 @@
 		var items,
 			dataPromise = {};
 
+        $scope.searchQuery = '';
+
 		$scope.dateToTimestamp = function(date, locale) {
 			if (date) {
 				if (locale == 'fr') {
@@ -25,7 +27,16 @@
 		};
 
         $scope.toggleNav = function() {
+            $rootScope.isSearching = false;
             $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
+        };
+
+        $scope.toggleSearch = function() {
+            $rootScope.isNavigating = false;
+            $rootScope.isSearching = $rootScope.isSearching ? false : true;
+            if ($rootScope.isSearching) {
+                angular.element('#searchInput').focus();
+            }
         };
 
         $scope.go = function(path, $event) {
@@ -38,6 +49,10 @@
         $scope.clickLogo = function($event) {
             $scope.go('/', $event);
             jQuery("html, body").animate({scrollTop:0}, 'slow');
+        };
+
+        $scope.search = function() {
+            $scope.go('/s/' + $scope.searchQuery);
         };
 
 	});

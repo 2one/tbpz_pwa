@@ -34,7 +34,7 @@
         /build -->
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, page: page}">
+	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, 'is-searching': isSearching}">
 
 		<nav nav-g class="navG"></nav>
 
@@ -43,7 +43,13 @@
                 ng-click="toggleNav()"></a>
             <a href="/" class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
                 ng-click="clickLogo($event)"></a>
+            <a href class="header__glass fa fa-search" onclick="ga('send', 'event', 'search', 'click', 'header buttons')"
+               ng-click="toggleSearch()"></a>
         </header>
+
+        <form class="search" ng-submit="search()">
+            <input type="input" ng-model="searchQuery" class="search__input" placeholder="Recherche" id="searchInput" />
+        </form>
 
 		<div class="container">
 

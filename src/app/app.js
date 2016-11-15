@@ -28,6 +28,11 @@ var app;
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
+        when('/s/:searchQuery', {
+            slug: 'search',
+            templateUrl: config.viewsPath +'articles.html',
+            controller: 'ArticlesCtrl'
+        }).
         otherwise({
             redirectTo: '/'
         });
@@ -38,10 +43,12 @@ var app;
         $scope.config = config;
         $scope.appReady = false;
         $scope.isNavigating = false;
+        $scope.isSearching = false;
         $scope.loadingNext = false;
 
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
+            $scope.isSearching = false;
             $scope.appReady = false;
         });
 

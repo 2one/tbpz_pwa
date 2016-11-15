@@ -1,23 +1,26 @@
 app.service('datasSce', function($http) {
     var promise = {};
     return {
-        getArticles: function(slug, page) {
-            if (!slug) {
-                var slug = '';
+        getArticles: function(categorySlug, searchQuery, page) {
+            if (!categorySlug) {
+                var categorySlug = '';
+            }
+            if (!searchQuery) {
+                var searchQuery = '';
             }
             if (!page) {
                 var page = 1;
             }
-            if (!promise['articles_' + slug + '_page' + page]) {
-                promise['articles_' + slug + '_page' + page] = $http.get(config.postsApiUrl.replace('{slug}', slug).replace('{page}', page)).then(function(res) {
+            if (!promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page]) {
+                promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page] = $http.get(config.apiUrls.posts.replace('{slug}', categorySlug).replace('{search}', searchQuery).replace('{page}', page)).then(function(res) {
                     return res.data;
                 });
             }
-            return promise['articles_' + slug + '_page' + page];
+            return promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page];
         },
         getArticleById: function(id) {
             if (!promise['article_'+ id]) {
-                promise['article_'+ id] = $http.get(config.singlepostApiUrl.replace('{ID}', id)).then(function(res) {
+                promise['article_'+ id] = $http.get(config.apiUrls.singlepost.replace('{ID}', id)).then(function(res) {
                     return res.data;
                 });
             }
@@ -25,7 +28,7 @@ app.service('datasSce', function($http) {
         },
         getArticleBySlug: function(slug) {
             if (!promise['article_'+ slug]) {
-                promise['article_'+ slug] = $http.get(config.postApiUrl.replace('{slug}', slug)).then(function(res) {
+                promise['article_'+ slug] = $http.get(config.apiUrls.post.replace('{slug}', slug)).then(function(res) {
                     return res.data;
                 });
             }
@@ -33,7 +36,7 @@ app.service('datasSce', function($http) {
         },
         getNavG: function() {
             if (!promise['nav']) {
-                promise['nav'] = $http.get(config.navApiUrl).then(function(res) {
+                promise['nav'] = $http.get(config.apiUrls.nav).then(function(res) {
                     return res.data;
                 });
             }
