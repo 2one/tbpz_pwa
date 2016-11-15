@@ -14,7 +14,8 @@
 
         $scope.load = function () {
             dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
-                $scope.articles = $scope.articles.concat(datas);console.log("articles:", $scope.articles);
+                $scope.articles = $scope.articles.concat(datas);
+                console.log("articles:", $scope.articles);
                 $rootScope.appReady = true;
                 $scope.loadingNext = false;
             });

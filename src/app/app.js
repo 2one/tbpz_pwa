@@ -18,11 +18,6 @@ var app;
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
-        when('/:articleSlug', {
-            slug: 'article',
-            templateUrl: config.viewsPath +'article.html',
-            controller: 'ArticleCtrl'
-        }).
         when('/category/:categorySlug', {
             slug: 'category',
             templateUrl: config.viewsPath +'articles.html',
@@ -32,6 +27,16 @@ var app;
             slug: 'search',
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
+        }).
+        when('/error', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error.html',
+            controller: 'ErrorCtrl'
+        }).
+        when('/:articleSlug', {
+            slug: 'article',
+            templateUrl: config.viewsPath +'article.html',
+            controller: 'ArticleCtrl'
         }).
         otherwise({
             redirectTo: '/'

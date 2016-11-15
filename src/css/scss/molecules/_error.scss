@@ -1,0 +1,27 @@
+.error {
+    position:fixed;
+    z-index:2;
+    top:0;
+    bottom:0;
+    color:$color-dark;
+    background:#FFF;
+    margin-top:50%;
+    transform:translateY(-50%);
+    width:100%;
+    text-align:center;
+
+    &__icon {
+        margin-bottom:15px;
+        font-size:50px;
+        color:$color-red;
+    }
+
+    .heading {
+        color:$color-dark;
+    }
+
+    .paragraph {
+        text-align:center;
+        margin:5px 0;
+    }
+}

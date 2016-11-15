@@ -1,4 +1,5 @@
 <article class="article"
+         ng-if="articles.length"
          ng-repeat="(index, article) in articles | orderBy:order">
     <div class="article__colDate">
         <div class="article__colDateWrapper">
@@ -21,5 +22,8 @@
         </div>
     </div>
 </article>
+<div class="error"
+     ng-if="!articles.length"
+     ng-include="config.incPath + 'noresult.html'"></div>
 <div class="infiniteLoader"
-    ng-if="loadingNext"></div>
+     ng-if="loadingNext"></div>

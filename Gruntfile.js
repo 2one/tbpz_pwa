@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [{
-                    src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery-migrate/jquery-migrate.min.js','bower_components/angular/angular.min.js','bower_components/angular-*/*.min.js'],
+                    src: ['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery-migrate/jquery-migrate.min.js','bower_components/angular/angular.min.js', 'bower_components/angular-i18n/angular-locale_fr-fr.js','bower_components/angular-*/*.min.js'],
                     dest: 'dist/js/vendors.min.js'
                 },
                 {
