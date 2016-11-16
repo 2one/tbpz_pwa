@@ -18,7 +18,7 @@
             </div>
             <div class="paragraph">
                 <div
-                    ng-bind-html="article.content | trustAsHtml"></div>
+                    ng-bind-html="article.content | trustAsHtml | parseLinks"></div>
             </div>
         </div>
     </div>
