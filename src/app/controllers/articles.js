@@ -18,6 +18,10 @@
                 console.log("articles:", $scope.articles);
                 $rootScope.appReady = true;
                 $scope.loadingNext = false;
+            }).catch(function(error) {
+                console.warn(error);
+                $rootScope.appReady = true;
+                $scope.go('/error');
             });
         }
         $scope.load();

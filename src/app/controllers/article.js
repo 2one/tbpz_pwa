@@ -7,18 +7,24 @@
                 $scope.article = datas;
                 console.log("article:", $scope.article);
                 $rootScope.appReady = true;
-            });
+            }).catch(function(error) {
+                console.warn(error);
+                $scope.go('/error');
+            });;
         } else if ($routeParams.articleSlug) {
             dataPromise = datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
                 if (!datas.length) {
                     $scope.article = datas;
-                    $scope.go('/error');
+                    $scope.go('/error/404');
                 } else {
                     $scope.article = datas[0];
                     console.log("article:", $scope.article);
                 }
                 $rootScope.appReady = true;
-            });
+            }).catch(function(error) {
+                console.warn(error);
+                $scope.go('/error');
+            });;
         }
 
     });

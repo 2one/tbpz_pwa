@@ -33,6 +33,11 @@ var app;
             templateUrl: config.viewsPath +'error.html',
             controller: 'ErrorCtrl'
         }).
+        when('/error/404', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error-404.html',
+            controller: 'ErrorCtrl'
+        }).
         when('/:articleSlug', {
             slug: 'article',
             templateUrl: config.viewsPath +'article.html',
