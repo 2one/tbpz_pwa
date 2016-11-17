@@ -10,7 +10,7 @@
             }).catch(function(error) {
                 console.warn(error);
                 $scope.go('/error');
-            });;
+            });
         } else if ($routeParams.articleSlug) {
             dataPromise = datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
                 if (!datas.length) {

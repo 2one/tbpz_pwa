@@ -1,12 +1,21 @@
-<ul class="navG__list">
-	<li class="navG__item navG__item--home">
-		<a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
-           ng-click="go('/', $event)">home</a>
-	</li>
-	<li class="navG__item navG__item--{{item.slug}}"
-		ng-repeat="(index, item) in nav">
-		<a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
-           ng-bind-html="item.name | lowercase"
-           ng-click="go('/category/' + item.slug + '/', $event)"></a>
-	</li>
-</ul>
+<div class="navG__scroller">
+    <ul class="navG__list">
+        <li class="navG__item navG__item--home">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/', $event)">home</a>
+        </li>
+        <li class="navG__item navG__item--{{item.slug}}"
+            ng-repeat="(index, item) in nav">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-bind-html="item.name | lowercase"
+               ng-click="go('/category/' + item.slug + '/', $event)"></a>
+        </li>
+    </ul>
+    <div class="navG__social">
+        <a href="https://www.facebook.com/TheBackPackerzOfficial" target="_blank"><span class="fa fa-facebook"></span></a>
+        <a href="https://twitter.com/TheBackPackerz" target="_blank"><span class="fa fa-twitter"></span></a>
+        <a href="https://instagram.com/thebackpackerz/" target="_blank"><span class="fa fa-instagram"></span></a>
+        <a href="http://soundsgood.co/curator/the-backpackerz" target="_blank"><span class="fa fa-play-circle"></span></a>
+        <a href="http://open.spotify.com/user/zeskebo/playlist/10tXdyZaykROykg8qXYMXP" target="_blank"><span class="fa fa-spotify"></span></a>
+    </div>
+</div>

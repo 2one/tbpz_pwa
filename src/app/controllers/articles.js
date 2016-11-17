@@ -26,10 +26,11 @@
         }
         $scope.load();
 
-        angular.element(window).bind('scroll', function() {
+        angular.element(window).off('scroll');
+        angular.element(window).on('scroll', function () {
             scrollTop = $document.scrollTop();
             documentHeight = $document.height();
-            if (documentHeight - windowHeight == scrollTop && !$scope.loadingNext && $scope.page < 10) {
+            if (documentHeight - windowHeight == scrollTop && !$scope.loadingNext && $scope.page < 10 && ['home', 'category', 'search'].indexOf($scope.slug) > -1) {
                 $scope.loadingNext = true;
                 $scope.page++;
                 $scope.load();

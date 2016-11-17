@@ -23,6 +23,11 @@
         left:0;
     }
 
+    &__scroller {
+        height:inherit;
+        overflow:auto;
+    }
+
     &__list {
         margin:57px 20px 0 20px;
         padding:0;
@@ -35,9 +40,9 @@
         font-weight:500;
         text-transform:capitalize;
 
-        &:first-child {
+        /*&:first-child {
             border-top:1px solid $color-light;
-        }
+        }*/
 
         a {
             padding:20px;
@@ -61,6 +66,32 @@
         &--non-classe,
         &--non-classe-en {
             display:none;
+        }
+    }
+
+    &__submenu {
+        height:0;
+        overflow:hidden;
+        list-style:none;
+        padding:0;
+
+        .navG__item a {
+            padding-left:40px;
+        }
+    }
+
+    &__social {
+        display:flex;
+        flex-direction:row;
+        justify-content: space-around;
+        margin:20px 40px;
+        font-size:28px;
+
+        a {
+            color:$color-light;
+            &:hover {
+                color:$color-red;
+            }
         }
     }
 }
