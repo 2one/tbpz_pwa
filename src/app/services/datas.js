@@ -34,6 +34,22 @@ app.service('datasSce', function($http) {
             }
             return promise['article_'+ slug];
         },
+        getPages: function() {
+            if (!promise['pages']) {
+                promise['pages'] = $http.get(config.apiUrls.pages).then(function(res) {
+                    return res.data;
+                });
+            }
+            return promise['pages'];
+        },
+        getPageBySlug: function(slug) {
+            if (!promise['page_'+ slug]) {
+                promise['page_'+ slug] = $http.get(config.apiUrls.page.replace('{slug}', slug)).then(function(res) {
+                    return res.data;
+                });
+            }
+            return promise['page_'+ slug];
+        },
         getNavG: function() {
             if (!promise['nav']) {
                 promise['nav'] = $http.get(config.apiUrls.nav).then(function(res) {

@@ -28,6 +28,11 @@ var app;
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
+        when('/page/:pageSlug', {
+            slug: 'page',
+            templateUrl: config.viewsPath +'page.html',
+            controller: 'PageCtrl'
+        }).
         when('/error', {
             slug: 'error',
             templateUrl: config.viewsPath +'error.html',

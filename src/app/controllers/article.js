@@ -24,7 +24,7 @@
             }).catch(function(error) {
                 console.warn(error);
                 $scope.go('/error');
-            });;
+            });
         }
 
     });
