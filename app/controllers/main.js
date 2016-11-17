@@ -1,12 +1,11 @@
 (function() {
 
-	app.controller('MainCtrl', function($scope, $rootScope, $location, $document, $timeout, $q, datasSce) {
+	app.controller('MainCtrl', function($scope, $rootScope, $location) {
 
 		var items,
-			dataPromise = {},
-			documentHeight = $document.height(),
-			documentWidth = $document.width(),
-			scrollTop = $document.scrollTop();
+			dataPromise = {};
+
+        $scope.searchQuery = '';
 
 		$scope.dateToTimestamp = function(date, locale) {
 			if (date) {
@@ -27,6 +26,19 @@
 			}
 		};
 
+        $scope.toggleNav = function() {
+            $rootScope.isSearching = false;
+            $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
+        };
+
+        $scope.toggleSearch = function() {
+            $rootScope.isNavigating = false;
+            $rootScope.isSearching = $rootScope.isSearching ? false : true;
+            if ($rootScope.isSearching) {
+                angular.element('#searchInput').focus();
+            }
+        };
+
         $scope.go = function(path, $event) {
             $location.path(path);
             if ($event) {
@@ -37,6 +49,10 @@
         $scope.clickLogo = function($event) {
             $scope.go('/', $event);
             jQuery("html, body").animate({scrollTop:0}, 'slow');
+        };
+
+        $scope.search = function() {
+            $scope.go('/s/' + $scope.searchQuery);
         };
 
 	});

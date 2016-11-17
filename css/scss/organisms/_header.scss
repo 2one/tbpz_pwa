@@ -2,7 +2,7 @@
 	position:fixed;
 	z-index:10;
 	width:100%;
-	height:55px;
+	height:$height-header;
 	top:0;
 	left:0;
     background:rgba($color-dark, 0.9);
@@ -39,6 +39,26 @@
         height:100%;
         background:url("../img/logo.png") no-repeat center;
         background-size:auto 40%;
+    }
+
+    &__glass {
+        position:absolute;
+        right:0;
+        top:50%;
+        margin-right:20px;
+        margin-top:-12px;
+        color:$color-red;
+        font-size:24px;
+        text-decoration:none;
+        transition:color linear 0.1s;
+
+        &:hover {
+            color:#FFF;
+        }
+
+        body.is-searching & {
+            color:#FFF;
+        }
     }
 
     &__shares {

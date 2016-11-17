@@ -16,12 +16,16 @@
 @import "atoms/date";
 @import "atoms/overheading";
 @import "atoms/button";
+@import "atoms/infiniteLoader";
+@import "atoms/bubble";
 
 /* MOLECULES */
 @import "molecules/banner";
+@import "molecules/error";
 
 /* ORGANISMS */
 @import "organisms/header";
 @import "organisms/navG";
 @import "organisms/content";
 @import "organisms/article";
+@import "organisms/search";

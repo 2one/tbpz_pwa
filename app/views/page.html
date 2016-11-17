@@ -1,15 +1,11 @@
-<article class="article"
-         ng-if="articles.length"
-         ng-repeat="(index, article) in articles | orderBy:order">
+<article class="article">
     <div class="article__colDate">
-        <div class="article__colDateWrapper">
+        <!--<div class="article__colDateWrapper">
             <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-        </div>
+        </div>-->
     </div>
     <div class="article__colContent">
-        <div class="article__colContentWrapper"
-            ng-click="go('/' + article.slug)">
-            <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+        <div class="article__colContentWrapper">
             <div class="banner">
                 <div class="banner__image"
                      ng-style="(article.featured_image.source) ? {'background-image':'url('+ article.featured_image.attachment_meta.sizes.medium.url +')'} : {}"></div>
@@ -19,11 +15,10 @@
                         ng-bind-html="article.title"></h2>
                 </div>
             </div>
+            <div class="paragraph">
+                <div
+                    ng-bind-html="article.content | trustAsHtml | parseLinks"></div>
+            </div>
         </div>
     </div>
 </article>
-<div class="error"
-     ng-if="!articles.length"
-     ng-include="config.incPath + 'noresult.html'"></div>
-<div class="infiniteLoader"
-     ng-if="loadingNext"></div>

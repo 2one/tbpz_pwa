@@ -3,6 +3,11 @@
         <div class="article__colDateWrapper">
             <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
         </div>
+        <div class="article__share" ng-controller="ShareCtrl">
+            <a href class="share share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
+            <a href class="share share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
+            <a href class="share share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
+        </div>
     </div>
     <div class="article__colContent">
         <div class="article__colContentWrapper">
@@ -16,9 +21,12 @@
                         ng-bind-html="article.title"></h2>
                 </div>
             </div>
+
             <div class="paragraph">
+                <div class="article__author"
+                     ng-if="article.author.name">Par <strong>{{article.author.name}}</strong></div>
                 <div
-                    ng-bind-html="article.content | trustAsHtml"></div>
+                    ng-bind-html="article.content | trustAsHtml | parseLinks"></div>
             </div>
         </div>
     </div>

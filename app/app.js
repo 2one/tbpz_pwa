@@ -1,6 +1,4 @@
 var app;
-var documentWidth = document.documentElement.clientWidth;
-var documentHeight = document.documentElement.clientHeight;
 
 (function() {
 
@@ -11,24 +9,44 @@ var documentHeight = document.documentElement.clientHeight;
 
         $routeProvider.
         when('/', {
-            page: 'home',
+            slug: 'home',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'HomeCtrl'
+            controller: 'ArticlesCtrl'
         }).
         when('/article/:articleId', {
-            page: 'article',
-            templateUrl: config.viewsPath +'article.html',
-            controller: 'ArticleCtrl'
-        }).
-        when('/:articleSlug', {
-            page: 'article',
+            slug: 'article',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
         when('/category/:categorySlug', {
-            page: 'category',
+            slug: 'category',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'CategoryCtrl'
+            controller: 'ArticlesCtrl'
+        }).
+        when('/s/:searchQuery', {
+            slug: 'search',
+            templateUrl: config.viewsPath +'articles.html',
+            controller: 'ArticlesCtrl'
+        }).
+        when('/page/:pageSlug', {
+            slug: 'page',
+            templateUrl: config.viewsPath +'page.html',
+            controller: 'PageCtrl'
+        }).
+        when('/error', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error.html',
+            controller: 'ErrorCtrl'
+        }).
+        when('/error/404', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error-404.html',
+            controller: 'ErrorCtrl'
+        }).
+        when('/:articleSlug', {
+            slug: 'article',
+            templateUrl: config.viewsPath +'article.html',
+            controller: 'ArticleCtrl'
         }).
         otherwise({
             redirectTo: '/'
@@ -40,36 +58,28 @@ var documentHeight = document.documentElement.clientHeight;
         $scope.config = config;
         $scope.appReady = false;
         $scope.isNavigating = false;
-        $scope.toggleNav = function() {
-            $scope.isNavigating = $scope.isNavigating ? false : true;
-        };
+        $scope.isSearching = false;
+        $scope.loadingNext = false;
 
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
+            $scope.isSearching = false;
             $scope.appReady = false;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-            $scope.page = current.$$route.page;
+            $scope.slug = current.$$route.slug;
         });
 
         $scope.$on('$routeChangeError', function (event, current, previous) {
         });
 
-		$scope.documentHeight = documentHeight;
-		angular.element(window).bind('resize', function() {
-			documentWidth = document.documentElement.clientWidth;
-		    documentHeight = document.documentElement.clientHeight;
-		    $scope.documentHeight = documentHeight;
-		    $scope.$apply();
-		});
-
 	}]);
 
-    if ('serviceWorker' in navigator) {
+    /*if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./js/service-worker.js')
+            .register('./sw.js')
             .then(function() { console.log('Service Worker Registered'); });
-    }
+    }*/
 
 })();

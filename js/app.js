@@ -1,16 +1,17 @@
 var config = {
     viewsPath: "./app/views/",
     incPath: "./app/views/partials/",
-	postsApiUrl: '//thebackpackerz.com/wp-json/posts?filter[posts_per_page]=5',
-    categoryPostsApiUrl: '//thebackpackerz.com/wp-json/posts?filter[category_name]={slug}&filter[posts_per_page]=5',
-    postApiUrl: '//thebackpackerz.com/wp-json/posts?filter[name]={slug}',
-    singlepostApiUrl: '//thebackpackerz.com/wp-json/posts/{ID}',
-	navApiUrl: '//thebackpackerz.com/wp-json/posts/types/posts/taxonomies/category/terms'
+    apiUrls: {
+        posts: '//thebackpackerz.com/wp-json/posts?type=post&filter[category_name]={slug}&filter[s]={search}&filter[posts_per_page]=4&page={page}',
+        post: '//thebackpackerz.com/wp-json/posts?type=post&filter[name]={slug}',
+        pages: '//thebackpackerz.com/wp-json/posts?type=page',
+        page: '//thebackpackerz.com/wp-json/posts?type=page&filter[name]={slug}',
+        singlepost: '//thebackpackerz.com/wp-json/posts/{ID}',
+        nav: '//thebackpackerz.com/wp-json/posts/types/posts/taxonomies/category/terms'
+    }
 };
 ;
 var app;
-var documentWidth = document.documentElement.clientWidth;
-var documentHeight = document.documentElement.clientHeight;
 
 (function() {
 
@@ -21,24 +22,44 @@ var documentHeight = document.documentElement.clientHeight;
 
         $routeProvider.
         when('/', {
-            page: 'home',
+            slug: 'home',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'HomeCtrl'
+            controller: 'ArticlesCtrl'
         }).
         when('/article/:articleId', {
-            page: 'article',
-            templateUrl: config.viewsPath +'article.html',
-            controller: 'ArticleCtrl'
-        }).
-        when('/:articleSlug', {
-            page: 'article',
+            slug: 'article',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
         when('/category/:categorySlug', {
-            page: 'category',
+            slug: 'category',
             templateUrl: config.viewsPath +'articles.html',
-            controller: 'CategoryCtrl'
+            controller: 'ArticlesCtrl'
+        }).
+        when('/s/:searchQuery', {
+            slug: 'search',
+            templateUrl: config.viewsPath +'articles.html',
+            controller: 'ArticlesCtrl'
+        }).
+        when('/page/:pageSlug', {
+            slug: 'page',
+            templateUrl: config.viewsPath +'page.html',
+            controller: 'PageCtrl'
+        }).
+        when('/error', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error.html',
+            controller: 'ErrorCtrl'
+        }).
+        when('/error/404', {
+            slug: 'error',
+            templateUrl: config.viewsPath +'error-404.html',
+            controller: 'ErrorCtrl'
+        }).
+        when('/:articleSlug', {
+            slug: 'article',
+            templateUrl: config.viewsPath +'article.html',
+            controller: 'ArticleCtrl'
         }).
         otherwise({
             redirectTo: '/'
@@ -50,54 +71,55 @@ var documentHeight = document.documentElement.clientHeight;
         $scope.config = config;
         $scope.appReady = false;
         $scope.isNavigating = false;
-        $scope.toggleNav = function() {
-            $scope.isNavigating = $scope.isNavigating ? false : true;
-        };
+        $scope.isSearching = false;
+        $scope.loadingNext = false;
 
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
+            $scope.isSearching = false;
             $scope.appReady = false;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
-            $scope.page = current.$$route.page;
+            $scope.slug = current.$$route.slug;
         });
 
         $scope.$on('$routeChangeError', function (event, current, previous) {
         });
 
-		$scope.documentHeight = documentHeight;
-		angular.element(window).bind('resize', function() {
-			documentWidth = document.documentElement.clientWidth;
-		    documentHeight = document.documentElement.clientHeight;
-		    $scope.documentHeight = documentHeight;
-		    $scope.$apply();
-		});
-
 	}]);
 
-    if ('serviceWorker' in navigator) {
+    /*if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./js/service-worker.js')
+            .register('./sw.js')
             .then(function() { console.log('Service Worker Registered'); });
-    }
+    }*/
 
 })();
 ;
 app.service('datasSce', function($http) {
     var promise = {};
     return {
-        getArticles: function() {
-            if (!promise['articles']) {
-                promise['articles'] = $http.get(config.postsApiUrl).then(function(res) {
+        getArticles: function(categorySlug, searchQuery, page) {
+            if (!categorySlug) {
+                var categorySlug = '';
+            }
+            if (!searchQuery) {
+                var searchQuery = '';
+            }
+            if (!page) {
+                var page = 1;
+            }
+            if (!promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page]) {
+                promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page] = $http.get(config.apiUrls.posts.replace('{slug}', categorySlug).replace('{search}', searchQuery).replace('{page}', page)).then(function(res) {
                     return res.data;
                 });
             }
-            return promise['articles'];
+            return promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page];
         },
         getArticleById: function(id) {
             if (!promise['article_'+ id]) {
-                promise['article_'+ id] = $http.get(config.singlepostApiUrl.replace('{ID}', id)).then(function(res) {
+                promise['article_'+ id] = $http.get(config.apiUrls.singlepost.replace('{ID}', id)).then(function(res) {
                     return res.data;
                 });
             }
@@ -105,23 +127,31 @@ app.service('datasSce', function($http) {
         },
         getArticleBySlug: function(slug) {
             if (!promise['article_'+ slug]) {
-                promise['article_'+ slug] = $http.get(config.postApiUrl.replace('{slug}', slug)).then(function(res) {
+                promise['article_'+ slug] = $http.get(config.apiUrls.post.replace('{slug}', slug)).then(function(res) {
                     return res.data;
                 });
             }
             return promise['article_'+ slug];
         },
-        getCategoryArticles: function(slug) {
-            if (!promise['category_' + slug]) {
-                promise['category_' + slug] = $http.get(config.categoryPostsApiUrl.replace('{slug}', slug)).then(function(res) {
+        getPages: function() {
+            if (!promise['pages']) {
+                promise['pages'] = $http.get(config.apiUrls.pages).then(function(res) {
                     return res.data;
                 });
             }
-            return promise['category_' + slug];
+            return promise['pages'];
+        },
+        getPageBySlug: function(slug) {
+            if (!promise['page_'+ slug]) {
+                promise['page_'+ slug] = $http.get(config.apiUrls.page.replace('{slug}', slug)).then(function(res) {
+                    return res.data;
+                });
+            }
+            return promise['page_'+ slug];
         },
         getNavG: function() {
             if (!promise['nav']) {
-                promise['nav'] = $http.get(config.navApiUrl).then(function(res) {
+                promise['nav'] = $http.get(config.apiUrls.nav).then(function(res) {
                     return res.data;
                 });
             }
@@ -142,6 +172,12 @@ app.directive('navG', ['datasSce', function(datasSce) {
 		},
         templateUrl: config.incPath + 'nav-g.html',
         replace: false
+    };
+}]);
+;
+app.filter('parseLinks', [function() {
+    return function(html) {
+        return String(html).replace(/<a([^>]*)href="http:\/\/thebackpackerz.com/gm, '<a$1href="\/#').replace(/_blank/gm, '_self');
     };
 }]);
 ;
@@ -167,13 +203,26 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
 
         if ($routeParams.articleId) {
             dataPromise = datasSce.getArticleById($routeParams.articleId).then(function (datas) {
-                $scope.article = datas;console.log("article:", $scope.article);
+                $scope.article = datas;
+                console.log("article:", $scope.article);
                 $rootScope.appReady = true;
+            }).catch(function(error) {
+                console.warn(error);
+                $scope.go('/error');
             });
         } else if ($routeParams.articleSlug) {
             dataPromise = datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
-                $scope.article = datas[0];console.log("article:", $scope.article);
+                if (!datas.length) {
+                    $scope.article = datas;
+                    $scope.go('/error/404');
+                } else {
+                    $scope.article = datas[0];
+                    console.log("article:", $scope.article);
+                }
                 $rootScope.appReady = true;
+            }).catch(function(error) {
+                console.warn(error);
+                $scope.go('/error');
             });
         }
 
@@ -183,13 +232,41 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
 ;
 (function() {
 
-    app.controller('CategoryCtrl', function($scope, $rootScope, $routeParams, $timeout, datasSce) {
+    app.controller('ArticlesCtrl', function($scope, $rootScope, $routeParams, $timeout, $document, datasSce) {
 
-        dataPromise = datasSce.getCategoryArticles($routeParams.categorySlug).then(function(datas) {
-            $scope.articles = datas;console.log("articles:", $scope.articles);
-            $scope.order = '-date';
+        var windowHeight = document.documentElement.clientHeight,
+            documentHeight = $document.height(),
+            scrollTop = $document.scrollTop(),
+            categorySlug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '',
+            searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
-            $rootScope.appReady = true;
+        $scope.articles = [];
+        $scope.page = 1;
+        $scope.order = '-date';
+
+        $scope.load = function () {
+            dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
+                $scope.articles = $scope.articles.concat(datas);
+                console.log("articles:", $scope.articles);
+                $rootScope.appReady = true;
+                $scope.loadingNext = false;
+            }).catch(function(error) {
+                console.warn(error);
+                $rootScope.appReady = true;
+                $scope.go('/error');
+            });
+        }
+        $scope.load();
+
+        angular.element(window).off('scroll');
+        angular.element(window).on('scroll', function () {
+            scrollTop = $document.scrollTop();
+            documentHeight = $document.height();
+            if (documentHeight - windowHeight == scrollTop && !$scope.loadingNext && $scope.page < 10 && ['home', 'category', 'search'].indexOf($scope.slug) > -1) {
+                $scope.loadingNext = true;
+                $scope.page++;
+                $scope.load();
+            }
         });
 
     });
@@ -198,14 +275,9 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
 ;
 (function() {
 
-    app.controller('HomeCtrl', function($scope, $rootScope, $timeout, datasSce) {
+    app.controller('ErrorCtrl', function($scope, $rootScope, $routeParams, datasSce) {
 
-        dataPromise = datasSce.getArticles().then(function(datas) {
-            $scope.articles = datas;console.log("articles:", $scope.articles);
-            $scope.order = '-date';
-
-            $rootScope.appReady = true;
-        });
+        $rootScope.appReady = true;
 
     });
 
@@ -213,13 +285,12 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
 ;
 (function() {
 
-	app.controller('MainCtrl', function($scope, $rootScope, $location, $document, $timeout, $q, datasSce) {
+	app.controller('MainCtrl', function($scope, $rootScope, $location) {
 
 		var items,
-			dataPromise = {},
-			documentHeight = $document.height(),
-			documentWidth = $document.width(),
-			scrollTop = $document.scrollTop();
+			dataPromise = {};
+
+        $scope.searchQuery = '';
 
 		$scope.dateToTimestamp = function(date, locale) {
 			if (date) {
@@ -240,6 +311,19 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
 			}
 		};
 
+        $scope.toggleNav = function() {
+            $rootScope.isSearching = false;
+            $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
+        };
+
+        $scope.toggleSearch = function() {
+            $rootScope.isNavigating = false;
+            $rootScope.isSearching = $rootScope.isSearching ? false : true;
+            if ($rootScope.isSearching) {
+                angular.element('#searchInput').focus();
+            }
+        };
+
         $scope.go = function(path, $event) {
             $location.path(path);
             if ($event) {
@@ -252,7 +336,33 @@ app.filter('trustAsUrl', ['$sce', function($sce) {
             jQuery("html, body").animate({scrollTop:0}, 'slow');
         };
 
+        $scope.search = function() {
+            $scope.go('/s/' + $scope.searchQuery);
+        };
+
 	});
+
+})();
+;
+(function() {
+
+    app.controller('PageCtrl', function($scope, $rootScope, $routeParams, datasSce) {
+
+        dataPromise = datasSce.getPageBySlug($routeParams.pageSlug).then(function (datas) {
+            if (!datas.length) {
+                $scope.article = datas;
+                $scope.go('/error/404');
+            } else {
+                $scope.article = datas[0];
+                console.log("page:", $scope.article);
+            }
+            $rootScope.appReady = true;
+        }).catch(function(error) {
+            console.warn(error);
+            $scope.go('/error');
+        });
+
+    });
 
 })();
 ;

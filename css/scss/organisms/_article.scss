@@ -189,6 +189,22 @@
         }
     }
 
+    &__author {
+        font-style:italic;
+        margin:15px 0;
+        color:$color-dark;
+        font-size:15px;
+    }
+
+    &__share {
+        width:46px;
+        margin:auto;
+
+        .share {
+            margin:10px 0 0 0;
+        }
+    }
+
     &:after {
         content:' ';
         display:block;
