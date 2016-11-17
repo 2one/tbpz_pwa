@@ -62,8 +62,8 @@ module.exports = function(grunt) {
                     dest: 'dist/js/vendors.min.js'
                 },
                 {
-                    src: ['src/js/libs/*.js'],
-                    dest: 'dist/js/libs.js'
+                    src: ['src/js/*.js'],
+                    dest: 'dist/js/scripts.js'
                 },
                 {
                     src: ['src/app/config.js','src/app/app.js','src/app/services/*.js','src/app/directives/*.js','src/app/filters/*.js','src/app/controllers/*.js'],
