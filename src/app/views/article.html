@@ -23,6 +23,11 @@
             </div>
 
             <div class="paragraph">
+                <div class="article__share" ng-controller="ShareCtrl">
+                    <a href class="share share--tiny share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
+                    <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
+                    <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
+                </div>
                 <div class="article__author"
                      ng-if="article.author.name">Par <strong>{{article.author.name}}</strong></div>
                 <div

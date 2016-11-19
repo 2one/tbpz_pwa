@@ -2,13 +2,17 @@
     <ul class="navG__list">
         <li class="navG__item navG__item--home">
             <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
-               ng-click="go('/', $event)">home</a>
+               ng-click="go('/', $event)">Home</a>
         </li>
         <li class="navG__item navG__item--{{item.slug}}"
             ng-repeat="(index, item) in nav">
             <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
                ng-bind-html="item.name | lowercase"
                ng-click="go('/category/' + item.slug + '/', $event)"></a>
+        </li>
+        <li class="navG__item navG__item--lab">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/page/le-lab-experiences-digitales-hip-hop/', $event)">Lab</a>
         </li>
     </ul>
     <div class="navG__social">

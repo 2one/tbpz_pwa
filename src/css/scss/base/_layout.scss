@@ -1,5 +1,6 @@
 body {
     overflow-y:scroll;
+    background:$color-dark;
     &:not(.is-ready) {
         background:$color-white;
     }

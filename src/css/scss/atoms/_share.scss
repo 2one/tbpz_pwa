@@ -1,16 +1,24 @@
 .share {
     display:inline-block;
     line-height:40px;
+    height:40px;
     padding:0 15px;
     margin-left:5px;
     transition:background-color 0.1s;
     border-radius:3px;
     color:#FFF;
     font-weight:500;
-    font-size:16px;
+    font-size:18px;
     text-decoration:none;
     vertical-align:top;
     cursor:pointer;
+
+    &--tiny {
+        line-height:24px;
+        height:24px;
+        padding:0 5px;
+        font-size:12px;
+    }
 
     &:first-child {
         margin-left:0;
@@ -24,10 +32,11 @@
 
     &:before {
         display:inline-block;
+        text-align:center;
         width:18px;
         height:18px;
         font-family:'FontAwesome';
-        font-size:18px;
+        font-size:inherit;
 
         @media (min-width:$bp-tablet) {
             float:left;
