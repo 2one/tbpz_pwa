@@ -36,7 +36,9 @@
         /build -->
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, 'is-searching': isSearching}">
+	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, 'is-searching': isSearching}"
+          ng-swipe-left="closeNav()"
+          ng-swipe-right="openNav()">
 
 		<nav nav-g class="navG"></nav>
 
@@ -49,7 +51,8 @@
                ng-click="toggleSearch()"></a>
         </header>
 
-        <form class="search" ng-submit="search()">
+        <form class="search" autocomplete="off"
+              ng-submit="search()">
             <input type="input" ng-model="searchQuery" class="search__input" placeholder="Recherche" id="searchInput" />
         </form>
 

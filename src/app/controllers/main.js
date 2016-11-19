@@ -26,6 +26,15 @@
 			}
 		};
 
+        $scope.openNav = function() {
+            $rootScope.isSearching = false;
+            $rootScope.isNavigating = true;
+        };
+
+        $scope.closeNav = function() {
+            $rootScope.isNavigating = false;
+        };
+
         $scope.toggleNav = function() {
             $rootScope.isSearching = false;
             $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
