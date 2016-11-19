@@ -250,7 +250,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
     grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
     grunt.registerTask('gh-deploy', ['publish', 'gh-pages']);
-    grunt.registerTask('publish', ['clean:before', 'css', 'js', 'html', 'clean:after' /*'htmlmin', 'test'*/]);
+    grunt.registerTask('publish', ['clean:before', 'css', 'js', 'html', /*'clean:after', 'htmlmin', 'test'*/]);
     grunt.registerTask('serve', ['browserSync', 'watch']);
     grunt.registerTask('default', ['publish', 'serve']);
 
