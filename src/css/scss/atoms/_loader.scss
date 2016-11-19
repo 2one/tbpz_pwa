@@ -7,7 +7,7 @@
     height:57px;
     margin-left:-95px;
     margin-top:-28px;
-    background:url('../img/loader-intro.gif') no-repeat;
+    background:url('./img/loader-intro.gif') no-repeat;
     background-size:100%;
     body.is-ready & {
         display:none;

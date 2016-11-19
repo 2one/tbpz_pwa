@@ -1,6 +1,8 @@
 
 module.exports = function(grunt) {
 
+    require('load-grunt-tasks')(grunt);
+
     var env = grunt.option('env') || "dev";
 
     var timestamp = Date.now();
@@ -12,7 +14,8 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            default: ['dist/*']
+            before: ['dist/*'],
+            after: ['dist/css/**', 'dist/js/**']
         },
 
         copy: {
@@ -20,15 +23,39 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src',
-                    src: ['**', '**/*', '!iframe.html'],
-                    dest: 'dist'
+                    src: ['**', '**/*', '!js/**', '!app/**', '!css/**'],
+                    dest: 'dist',
+                    filter: 'isFile'
+                }]
+            },
+            bowerCSS: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components',
+                    src: [
+                        'font-awesome/css/**.min.css'
+                    ],
+                    dest: 'dist/css',
+                    flatten: true,
+                    filter: 'isFile'
+                }]
+            },
+            bowerFonts: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components',
+                    src: [
+                        'font-awesome/fonts/**'
+                    ],
+                    dest: 'dist/fonts',
+                    flatten: true,
+                    filter: 'isFile'
                 }]
             }
         },
 
         sass: {
             options: {
-                style: "compressed",
                 sourcemap: "inline"
             },
             default: {
@@ -86,6 +113,16 @@ module.exports = function(grunt) {
                     cwd: 'src',
                     src: ['index.html'],
                     dest: 'dist'
+                }]
+            }
+        },
+
+        ngtemplates:  {
+            app: {
+                files: [{
+                    cwd: 'src',
+                    src: './app/views/**/*.html',
+                    dest: 'dist/js/app.templates.js'
                 }]
             }
         },
@@ -188,33 +225,32 @@ module.exports = function(grunt) {
                 },
                 src: ['src/**/*.html', 'src/css/**/*.scss', '!src/css/scss/base/_normalize.scss', 'src/app/**/*.js', 'src/js/**/*.js']
             }
+        },
+
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    minifyJS: true,
+                    minifyCSS: true
+                },
+                files: {
+                    'dist/index.html': 'dist/index.html'
+                }
+            }
         }
 
     });
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-processhtml');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-ftp-deploy');
-    grunt.loadNpmTasks('grunt-gh-pages');
-    grunt.loadNpmTasks('grunt-notify');
-    grunt.loadNpmTasks('grunt-htmlhint');
-    grunt.loadNpmTasks('grunt-contrib-csslint');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-lintspaces');
-
-    grunt.registerTask('html', ['copy', 'processhtml']);
+    grunt.registerTask('html', ['copy', 'ngtemplates', 'processhtml']);
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
     grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
-    grunt.registerTask('deploy', ['publish', /*'ftp-deploy', */ 'gh-pages']);
-    grunt.registerTask('publish', ['clean', 'css', 'js', 'html'/*, 'test'*/]);
+    grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
+    grunt.registerTask('gh-deploy', ['publish', 'gh-pages']);
+    grunt.registerTask('publish', ['clean:before', 'css', 'js', 'html', 'clean:after' /*'htmlmin', 'test'*/]);
     grunt.registerTask('serve', ['browserSync', 'watch']);
     grunt.registerTask('default', ['publish', 'serve']);
 

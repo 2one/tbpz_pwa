@@ -53,7 +53,7 @@ var app;
         });
     }]);
 
-	app.run(['$rootScope', function($scope) {
+	app.run(['$rootScope', '$http', '$templateCache', function($scope, $http, $templateCache) {
 
         $scope.config = config;
         $scope.appReady = false;
@@ -73,6 +73,9 @@ var app;
 
         $scope.$on('$routeChangeError', function (event, current, previous) {
         });
+
+        //$http.get(config.viewsPath +'article.html', { cache: $templateCache });
+        //$http.get(config.viewsPath +'error.html', { cache: $templateCache });
 
 	}]);
 

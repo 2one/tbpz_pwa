@@ -1,6 +1,6 @@
 (function() {
 
-    app.controller('ArticlesCtrl', function($scope, $rootScope, $routeParams, $timeout, $document, datasSce) {
+    app.controller('ArticlesCtrl', function($scope, $rootScope, $routeParams, $timeout, $document, $window, datasSce) {
 
         var windowHeight = document.documentElement.clientHeight,
             documentHeight = $document.height(),
@@ -30,7 +30,7 @@
         angular.element(window).on('scroll', function () {
             scrollTop = $document.scrollTop();
             documentHeight = $document.height();
-            if (documentHeight - windowHeight == scrollTop && !$scope.loadingNext && $scope.page < 10 && ['home', 'category', 'search'].indexOf($scope.slug) > -1) {
+            if (scrollTop + 60 >= documentHeight - windowHeight && !$scope.loadingNext && $scope.page < 10 && ['home', 'category', 'search'].indexOf($scope.slug) > -1) {
                 $scope.loadingNext = true;
                 $scope.page++;
                 $scope.load();
