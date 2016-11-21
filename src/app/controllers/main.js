@@ -64,6 +64,10 @@
             $scope.go('/s/' + $scope.searchQuery);
         };
 
+        $scope.loadPlayer = function() {
+            $scope.isPlayerReady = true;
+        };
+
 	});
 
 })();

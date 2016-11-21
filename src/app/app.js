@@ -74,9 +74,6 @@ var app;
         $scope.$on('$routeChangeError', function (event, current, previous) {
         });
 
-        //$http.get(config.viewsPath +'article.html', { cache: $templateCache });
-        //$http.get(config.viewsPath +'error.html', { cache: $templateCache });
-
 	}]);
 
     /*if ('serviceWorker' in navigator) {

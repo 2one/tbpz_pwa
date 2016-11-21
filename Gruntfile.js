@@ -201,7 +201,7 @@ module.exports = function(grunt) {
                 options: {
                     csslintrc: '.csslintrc'
                 },
-                src: ['dist/css/**/*.css']
+                src: ['src/css/**/*.scss']
             }
         },
 
@@ -210,7 +210,7 @@ module.exports = function(grunt) {
                 options: {
                     jshintrc: '.jshintrc'
                 },
-                src: ['src/app/**/*.js', 'src/js/**/*.js']
+                src: ['dist/js/*.js', '!dist/js/vendors.min.js']
             }
         },
 
@@ -230,10 +230,19 @@ module.exports = function(grunt) {
         htmlmin: {
             dist: {
                 options: {
+                    minifyJS: {
+                        mangle: false,
+                        beautify:false
+                    },
+                    minifyCSS: true,
                     removeComments: true,
-                    collapseWhitespace: true,
-                    minifyJS: true,
-                    minifyCSS: true
+                    collapseBooleanAttributes:      true,
+                    collapseWhitespace:             true,
+                    removeAttributeQuotes:          true,
+                    removeEmptyAttributes:          true,
+                    removeRedundantAttributes:      true,
+                    removeScriptTypeAttributes:     true,
+                    removeStyleLinkTypeAttributes:  true
                 },
                 files: {
                     'dist/index.html': 'dist/index.html'
@@ -247,12 +256,13 @@ module.exports = function(grunt) {
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
-    grunt.registerTask('test', ['htmlhint', 'csslint', 'jshint', 'lintspaces']);
+    grunt.registerTask('serve', ['browserSync', 'watch']);
+    grunt.registerTask('compile', ['clean:before', 'css', 'js', 'html']);
+    grunt.registerTask('test', ['htmlhint', /*'csslint',*/ /*'jshint',*/ /*'lintspaces'*/]);
+    grunt.registerTask('publish', ['compile', 'test', 'clean:after', 'htmlmin']);
     grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
     grunt.registerTask('gh-deploy', ['publish', 'gh-pages']);
-    grunt.registerTask('publish', ['clean:before', 'css', 'js', 'html', /*'clean:after', 'htmlmin', 'test'*/]);
-    grunt.registerTask('serve', ['browserSync', 'watch']);
-    grunt.registerTask('default', ['publish', 'serve']);
+    grunt.registerTask('default', ['compile', 'serve']);
 
     grunt.event.on('watch', function(action, filepath, target) {
         grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

@@ -36,7 +36,7 @@
         /build -->
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, 'is-searching': isSearching}"
+	<body ng-class="{'is-ready': (appReady), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
@@ -63,8 +63,24 @@
                      autoscroll="true">
 			</section>
 
-            <a href="#" class="bubble"></a>
-
+            <a href class="bubble"
+                ng-click="loadPlayer()"></a>
+            <section class="player"
+                     ng-class="{'is-active': isPlayerReady}"
+                     ng-show="isPlayerReady">
+                <div class="player__wrapper">
+                    <div class="player__controls">
+                        <a href class="player__control fa fa-play" onclick="ga('send', 'event', 'play', 'click', 'player buttons')"
+                           ng-click="loadAlbumSample(loadedAlbum)"
+                           ng-hide="isPlaying"></a>
+                        <a href class="player__control fa fa-pause" onclick="ga('send', 'event', 'pause', 'click', 'player buttons')"
+                           ng-click="pauseAlbumSample()"
+                           ng-show="isPlaying"></a>
+                        <a href class="player__control fa fa-step-forward" onclick="ga('send', 'event', 'forward', 'click', 'player buttons')"
+                           ng-click="nextAlbumSample()"></a>
+                    </div>
+                </div>
+            </section>
 		</div>
 
         <div class="loader"></div>
