@@ -35,9 +35,11 @@
 
     &__close {
         position:absolute;
-        color:#FFF;
-        top:5px;
-        right:5px;
+        color:$color-lighter-2;
+        top:12px;
+        right:10px;
+        font-size:22px;
+        cursor:pointer;
 
         &:hover {
             color:$color-red;
@@ -47,9 +49,11 @@
     &__expand,
     &__compress {
         position:absolute;
-        color:#FFF;
-        top:25px;
-        right:5px;
+        color:$color-lighter-2;
+        top:12px;
+        right:41px;
+        font-size:22px;
+        cursor:pointer;
 
         &:hover {
             color:$color-red;
