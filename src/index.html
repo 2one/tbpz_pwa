@@ -81,7 +81,9 @@
             <span class="player__compress fa fa-toggle-up"
                   ng-hide="isPlayerReduced == false"
                   ng-click="isPlayerReduced = false"></span>
-            <iframe src="http://thebackpackerz.com/player/?url=http://thebackpackerz.com/player/?url=https://www.youtube.com/playlist?list=PLR_EFhHhjoEFEJoPr7Eoppp1PQ0av_atK&theme=dark" width="100%" height="232" frameborder="0"></iframe>
+            <iframe ng-src="http://thebackpackerz.com/player/?url=https://www.youtube.com/playlist?list=PLR_EFhHhjoEFEJoPr7Eoppp1PQ0av_atK&theme=dark&autoplay=1"
+                    ng-if="isPlayerReady"
+                    width="100%" height="232" frameborder="0"></iframe>
         </section>
 
         <!-- build:js inline scripts.min.js
