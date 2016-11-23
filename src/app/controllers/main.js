@@ -66,6 +66,7 @@
 
         $scope.loadPlayer = function() {
             $scope.isPlayerReady = true;
+            $scope.isPlayerReduced = false;
         };
 
 	});

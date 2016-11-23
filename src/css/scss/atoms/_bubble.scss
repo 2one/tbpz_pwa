@@ -14,8 +14,9 @@
     background:$color-red;
     text-align:center;
     border-radius:100%;
-    transition: box-shadow linear 0.1s;
+    transition: all linear 0.1s;
     cursor:pointer;
+    opacity:1;
 
     &:hover {
         box-shadow:0px 0px 1px #000;
@@ -26,5 +27,9 @@
         font-size:32px;
         font-family: FontAwesome;
         content:'\f001';
+    }
+
+    &.is-active {
+        opacity:0;
     }
 }

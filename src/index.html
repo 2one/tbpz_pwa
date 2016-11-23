@@ -64,26 +64,25 @@
 			</section>
 
             <a href class="bubble"
-                ng-click="loadPlayer()"></a>
-            <section class="player"
-                     ng-class="{'is-active': isPlayerReady}"
-                     ng-show="isPlayerReady">
-                <div class="player__wrapper">
-                    <div class="player__controls">
-                        <a href class="player__control fa fa-play" onclick="ga('send', 'event', 'play', 'click', 'player buttons')"
-                           ng-click="loadAlbumSample(loadedAlbum)"
-                           ng-hide="isPlaying"></a>
-                        <a href class="player__control fa fa-pause" onclick="ga('send', 'event', 'pause', 'click', 'player buttons')"
-                           ng-click="pauseAlbumSample()"
-                           ng-show="isPlaying"></a>
-                        <a href class="player__control fa fa-step-forward" onclick="ga('send', 'event', 'forward', 'click', 'player buttons')"
-                           ng-click="nextAlbumSample()"></a>
-                    </div>
-                </div>
-            </section>
+               ng-class="{'is-active': isPlayerReady}"
+               ng-click="loadPlayer()"></a>
+
 		</div>
 
         <div class="loader"></div>
+
+        <section class="player"
+                 ng-class="{'is-active': isPlayerReady, 'is-reduced': isPlayerReduced}">
+            <span class="player__close fa fa-close"
+                  ng-click="isPlayerReady = false;isPlayerReduced == false"></span>
+            <span class="player__expand fa fa-toggle-down"
+                  ng-hide="isPlayerReduced == true"
+                  ng-click="isPlayerReduced = true"></span>
+            <span class="player__compress fa fa-toggle-up"
+                  ng-hide="isPlayerReduced == false"
+                  ng-click="isPlayerReduced = false"></span>
+            <iframe src="http://thebackpackerz.com/player/?url=http://thebackpackerz.com/player/?url=https://www.youtube.com/playlist?list=PLR_EFhHhjoEFEJoPr7Eoppp1PQ0av_atK&theme=dark" width="100%" height="232" frameborder="0"></iframe>
+        </section>
 
         <!-- build:js inline scripts.min.js
         <script src="../dist/js/vendors.min.js"></script>
