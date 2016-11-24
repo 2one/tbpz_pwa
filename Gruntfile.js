@@ -117,6 +117,20 @@ module.exports = function(grunt) {
             }
         },
 
+        'string-replace': {
+            default: {
+                files: {
+                    'dist/index.html': 'dist/index.html'
+                },
+                options: {
+                    replacements: [{
+                        pattern: /..\/fonts\//ig,
+                        replacement: '.\/fonts\/'
+                    }]
+                }
+            }
+        },
+
         ngtemplates:  {
             app: {
                 files: [{
@@ -252,7 +266,7 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('html', ['copy', 'ngtemplates', 'processhtml']);
+    grunt.registerTask('html', ['copy', 'ngtemplates', 'processhtml', 'string-replace']);
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
