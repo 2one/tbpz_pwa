@@ -176,7 +176,7 @@ module.exports = function(grunt) {
                 options: {
                     watchTask: true,
                     server: './dist'/*,
-                    https: true*/
+                    https: true,*/
                 }
             }
         },
@@ -250,13 +250,13 @@ module.exports = function(grunt) {
                     },
                     minifyCSS: true,
                     removeComments: true,
-                    collapseBooleanAttributes:      true,
-                    collapseWhitespace:             true,
-                    removeAttributeQuotes:          true,
-                    removeEmptyAttributes:          true,
-                    removeRedundantAttributes:      true,
-                    removeScriptTypeAttributes:     true,
-                    removeStyleLinkTypeAttributes:  true
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true,
+                    removeEmptyAttributes: true,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributes: true
                 },
                 files: {
                     'dist/index.html': 'dist/index.html'

@@ -4,8 +4,9 @@ var app;
 
 	app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngTouch']);
 
-    app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-        //$locationProvider.html5Mode(true).hashPrefix('!');
+    app.config(['$locationProvider', '$routeProvider', '$sceProvider', function($locationProvider, $routeProvider, $sceProvider) {
+        $locationProvider.html5Mode(true).hashPrefix('!');
+        $sceProvider.enabled(false);
 
         $routeProvider.
         when('/', {
