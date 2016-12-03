@@ -2,6 +2,12 @@
     position:relative;
     background-color:$color-dark;
     overflow:hidden;
+    transition:all linear 0.2s;
+    opacity:1;
+
+    &.ng-enter {
+        opacity:0.5;
+    }
 
     .container > &:before {
         content:' ';

@@ -45,6 +45,8 @@
             $rootScope.isSearching = $rootScope.isSearching ? false : true;
             if ($rootScope.isSearching) {
                 angular.element('#searchInput').focus();
+            } else {
+                angular.element('#searchInput').blur();
             }
         };
 
@@ -61,6 +63,7 @@
         };
 
         $scope.search = function() {
+            angular.element('#searchInput').blur();
             $scope.go('/s/' + $scope.searchQuery);
         };
 

@@ -12,10 +12,8 @@ $color-red: #b22d2d;
 
 /* SIZES */
 
-$width-container: 1004px;
 $height-header: 55px;
-$height-nav: 110px;
-$height-nav-mobile: 60px;
+$height-header-big: 90px;
 
 /* BREAK POINTS */
 
@@ -23,4 +21,3 @@ $bp-min: 320px;
 $bp-phone: 480px;
 $bp-phablet: 640px;
 $bp-tablet: 768px;
-$bp-smalldesktop: $width-container + 8;

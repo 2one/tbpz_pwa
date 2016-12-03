@@ -10,6 +10,10 @@
     background:rgba($color-dark, 0.9);
     transition:top 0.25s;
 
+    @media (min-width:$bp-phone) {
+        top:-$height-header-big;
+    }
+
     &__input {
         display:block;
         width:100%;
@@ -26,5 +30,9 @@
 
     body.is-searching & {
         top:$height-header;
+
+        @media (min-width:$bp-phone) {
+            top:$height-header-big;
+        }
     }
 }

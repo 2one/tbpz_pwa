@@ -2,7 +2,7 @@ var app;
 
 (function() {
 
-	app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngTouch']);
+	app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngTouch', 'ngAnimate']);
 
     app.config(['$locationProvider', '$routeProvider', '$sceProvider', function($locationProvider, $routeProvider, $sceProvider) {
         $locationProvider.html5Mode(true).hashPrefix('!');

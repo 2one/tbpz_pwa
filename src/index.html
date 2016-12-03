@@ -43,12 +43,14 @@
 		<nav nav-g class="navG"></nav>
 
         <header class="header is-reduced">
-            <a href class="header__burger fa fa-bars" onclick="ga('send', 'event', 'burger', 'click', 'header buttons')"
+            <a href class="header__icon header__icon--burger fa fa-bars" onclick="ga('send', 'event', 'burger', 'click', 'header buttons')"
                 ng-click="toggleNav()"></a>
             <a href="/" class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
                 ng-click="clickLogo($event)"></a>
-            <a href class="header__glass fa fa-search" onclick="ga('send', 'event', 'search', 'click', 'header buttons')"
+            <a href class="header__icon header__icon--glass fa fa-search" onclick="ga('send', 'event', 'search', 'click', 'header buttons')"
                ng-click="toggleSearch()"></a>
+            <a href class="header__icon header__icon--ellipsis fa fa-ellipsis-v" onclick="ga('send', 'event', 'ellipsis', 'click', 'header buttons')"
+               ng-click="toggleMenu()"></a>
         </header>
 
         <form class="search" autocomplete="off"

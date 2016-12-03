@@ -5,6 +5,10 @@
 
     &:first-child {
         margin-top:$height-header;
+
+        @media (min-width:$bp-phone) {
+            margin-top:$height-header-big;
+        }
     }
 
     &__colDate {
@@ -93,10 +97,6 @@
 
             &[ng-click] {
                 cursor:pointer;
-
-                &:hover .heading {
-                    color:$color-red;
-                }
             }
 
             &:before {
@@ -180,7 +180,7 @@
             word-spacing:initial;
             background:$color-dark;
             color:$color-white;
-            font-size:18px;
+            font-size:14px;
             border-bottom:1px solid $color-lighter;
 
             @media (min-width:$bp-phone) {

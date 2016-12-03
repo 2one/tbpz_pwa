@@ -26,10 +26,6 @@
         }
         $scope.load();
 
-        /*if (searchQuery) {
-            $rootScope.isSearching = true;
-        }*/
-
         angular.element(window).off('scroll');
         angular.element(window).on('scroll', function () {
             scrollTop = $document.scrollTop();

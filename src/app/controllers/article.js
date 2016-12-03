@@ -13,11 +13,10 @@
             });
         } else if ($routeParams.articleSlug) {
             dataPromise = datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
-                if (!datas.length) {
-                    $scope.article = datas;
+                if (!datas) {
                     $scope.go('/error/404');
                 } else {
-                    $scope.article = datas[0];
+                    $scope.article = datas;
                     console.log("article:", $scope.article);
                 }
                 $rootScope.appReady = true;

@@ -3,12 +3,12 @@
     z-index:1;
     bottom:20px;
     right:20px;
-    display:inline-block;
+    display:flex;
+    align-items:center;
     box-shadow:0px 0px 10px #000;
-    width:60px;
-    height:60px;
-    line-height:44px;
-    font-size:60px;
+    width:40px;
+    height:40px;
+    line-height:1;
     text-decoration:none;
     color:#FFF;
     background:$color-red;
@@ -18,15 +18,25 @@
     cursor:pointer;
     opacity:1;
 
+    @media (min-width:$bp-phone) {
+        width:60px;
+        height:60px;
+    }
+
     &:hover {
         box-shadow:0px 0px 1px #000;
     }
 
     &:before {
         display:inline-block;
-        font-size:32px;
+        flex: 1 0;
+        font-size:24px;
         font-family: FontAwesome;
         content:'\f001';
+
+        @media (min-width:$bp-phone) {
+            font-size:32px;
+        }
     }
 
     &.is-active {

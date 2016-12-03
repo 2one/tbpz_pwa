@@ -4,11 +4,25 @@
             <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
                ng-click="go('/', $event)">Home</a>
         </li>
-        <li class="navG__item navG__item--{{item.slug}}"
-            ng-repeat="(index, item) in nav">
+        <li class="navG__item navG__item--dossier">
             <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
-               ng-bind-html="item.name | lowercase"
-               ng-click="go('/category/' + item.slug + '/', $event)"></a>
+               ng-click="go('/category/dossier', $event)">Dossiers</a>
+        </li>
+        <li class="navG__item navG__item--top10">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/category/top10', $event)">Top 10</a>
+        </li>
+        <li class="navG__item navG__item--chroniques">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/category/chroniques', $event)">Chroniques</a>
+        </li>
+        <li class="navG__item navG__item--interviews">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/category/interviews', $event)">Interviews</a>
+        </li>
+        <li class="navG__item navG__item--sons">
+            <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
+               ng-click="go('/category/sons', $event)">Digging</a>
         </li>
         <li class="navG__item navG__item--lab">
             <a href="#" onclick="ga('send', 'event', 'navCat', 'click', 'nav buttons')"
