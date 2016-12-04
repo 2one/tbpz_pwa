@@ -11,41 +11,49 @@ var app;
         $routeProvider.
         when('/', {
             slug: 'home',
+            templatePage: 'listing',
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
         when('/article/:articleId', {
             slug: 'article',
+            templatePage: 'single',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
         when('/category/:categorySlug', {
             slug: 'category',
+            templatePage: 'listing',
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
         when('/s/:searchQuery', {
             slug: 'search',
+            templatePage: 'listing',
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
         when('/page/:pageSlug', {
             slug: 'page',
+            templatePage: 'single',
             templateUrl: config.viewsPath +'page.html',
             controller: 'PageCtrl'
         }).
         when('/error', {
             slug: 'error',
+            templatePage: 'error',
             templateUrl: config.viewsPath +'error.html',
             controller: 'ErrorCtrl'
         }).
         when('/error/404', {
             slug: 'error',
+            templatePage: 'error',
             templateUrl: config.viewsPath +'error-404.html',
             controller: 'ErrorCtrl'
         }).
         when('/:articleSlug', {
             slug: 'article',
+            templatePage: 'single',
             templateUrl: config.viewsPath +'article.html',
             controller: 'ArticleCtrl'
         }).
@@ -54,10 +62,11 @@ var app;
         });
     }]);
 
-	app.run(['$rootScope', '$http', '$templateCache', function($scope, $http, $templateCache) {
+	app.run(['$rootScope', '$http', '$templateCache', function($scope, $rootScope, $http, $templateCache) {
 
         $scope.config = config;
         $scope.appReady = false;
+        $scope.isSwitchingView = false;
         $scope.isNavigating = false;
         $scope.isSearching = false;
         $scope.loadingNext = false;
@@ -65,11 +74,11 @@ var app;
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
             $scope.isSearching = false;
-            $scope.appReady = false;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
             $scope.slug = current.$$route.slug;
+            $scope.templatePage = current.$$route.templatePage;
         });
 
         $scope.$on('$routeChangeError', function (event, current, previous) {

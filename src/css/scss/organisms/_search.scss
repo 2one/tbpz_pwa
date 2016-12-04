@@ -10,7 +10,7 @@
     background:rgba($color-dark, 0.9);
     transition:top 0.25s;
 
-    @media (min-width:$bp-phone) {
+    @media (min-width:$bp-tablet) {
         top:-$height-header-big;
     }
 
@@ -31,7 +31,7 @@
     body.is-searching & {
         top:$height-header;
 
-        @media (min-width:$bp-phone) {
+        @media (min-width:$bp-tablet) {
             top:$height-header-big;
         }
     }

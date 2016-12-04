@@ -13,7 +13,7 @@
     text-align:center;
     transition:height 0.25s;
 
-    @media (min-width:$bp-phone) {
+    @media (min-width:$bp-tablet) {
         height:$height-header-big;
         padding:0 20px;
     }
@@ -33,13 +33,31 @@
         text-decoration:none;
         transition:color linear 0.1s;
 
-        @media (min-width:$bp-phone) {
+        @media (min-width:$bp-tablet) {
             font-size:28px;
+        }
+
+        &:before {
+            display:inline-block;
+            font-family: FontAwesome;
+            content:'\f1ce';
+            color:inherit;
         }
 
         &--burger {
             body.is-navigating & {
                 color:#FFF;
+            }
+
+            &:before {
+                content:'\f0c9';
+            }
+        }
+
+        &--back {
+            &:before {
+                animation:burger2back 0.25s linear;
+                content:'\f060';
             }
         }
 
@@ -47,17 +65,26 @@
             body.is-searching & {
                 color:#FFF;
             }
+
+            &:before {
+                content:'\f002';
+            }
         }
 
         &--ellipsis {
             margin-left:15px;
+            margin-top:2px;
 
-            @media (min-width:$bp-phone) {
+            @media (min-width:$bp-tablet) {
                 margin-left:20px;
             }
 
             body.is-menuopening & {
                 color:#FFF;
+            }
+
+            &:before {
+                content:'\f142';
             }
         }
     }

@@ -2,11 +2,14 @@
 
     app.controller('ArticleCtrl', function($scope, $rootScope, $routeParams, datasSce) {
 
+        $scope.isSwitchingView = true;
+
         if ($routeParams.articleId) {
             dataPromise = datasSce.getArticleById($routeParams.articleId).then(function (datas) {
                 $scope.article = datas;
                 console.log("article:", $scope.article);
                 $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
             }).catch(function(error) {
                 console.warn(error);
                 $scope.go('/error');
@@ -20,6 +23,7 @@
                     console.log("article:", $scope.article);
                 }
                 $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
             }).catch(function(error) {
                 console.warn(error);
                 $scope.go('/error');

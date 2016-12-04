@@ -6,7 +6,7 @@
     &:first-child {
         margin-top:$height-header;
 
-        @media (min-width:$bp-phone) {
+        @media (min-width:$bp-tablet) {
             margin-top:$height-header-big;
         }
     }

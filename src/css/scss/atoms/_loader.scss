@@ -14,6 +14,24 @@
         display:none;
     }
 
+    body.is-loading & {
+        display:flex;
+        align-items:center;
+        background:none;
+        width:auto;
+        margin: 0;
+
+        &:before {
+            display:inline-block;
+            flex:1 0;
+            font-size:32px;
+            font-family: FontAwesome;
+            content:'\f1ce';
+            color:$color-red;
+            animation:rotate360 1s linear infinite;
+        }
+    }
+
     @media (min-width:$bp-phone) {
         width:382px;
         height:114px;

@@ -1,6 +1,6 @@
 (function() {
 
-	app.controller('MainCtrl', function($scope, $rootScope, $location) {
+	app.controller('MainCtrl', function($scope, $rootScope, $location, $window) {
 
 		var items,
 			dataPromise = {};
@@ -36,8 +36,20 @@
         };
 
         $scope.toggleNav = function() {
-            $rootScope.isSearching = false;
-            $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
+            if ($rootScope.templatePage == 'single') {
+                if (document.referrer.indexOf(document.location.origin) === 0) {
+                    $window.history.back();
+                } else {
+                    $scope.go('/');
+                }
+            } else {
+                $rootScope.isSearching = false;
+                $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
+            }
+        };
+
+        $scope.back = function() {
+            console.log($location);
         };
 
         $scope.toggleSearch = function() {

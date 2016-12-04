@@ -23,7 +23,7 @@
     </div>
 </article>
 <div class="error"
-     ng-if="!articles.length"
+     ng-if="slug == 'search' && !isSwitchingView && !articles.length"
      ng-include="config.incPath + 'noresult.html'"></div>
 <div class="infiniteLoader"
      ng-if="loadingNext"></div>

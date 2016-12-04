@@ -8,6 +8,7 @@
             categorySlug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '',
             searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
+        $rootScope.isSwitchingView = true;
         $scope.articles = [];
         $scope.page = 1;
         $scope.order = '-date';
@@ -17,10 +18,12 @@
                 $scope.articles = $scope.articles.concat(datas);
                 console.log("articles:", $scope.articles);
                 $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
                 $scope.loadingNext = false;
             }).catch(function(error) {
                 console.warn(error);
                 $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
                 $scope.go('/error');
             });
         }
