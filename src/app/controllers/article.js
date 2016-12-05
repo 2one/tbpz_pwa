@@ -2,7 +2,8 @@
 
     app.controller('ArticleCtrl', function($scope, $rootScope, $routeParams, datasSce) {
 
-        $scope.isSwitchingView = true;
+        $scope.setNetwork();
+        $rootScope.isSwitchingView = true;
 
         if ($routeParams.articleId) {
             dataPromise = datasSce.getArticleById($routeParams.articleId).then(function (datas) {
@@ -12,7 +13,9 @@
                 $rootScope.isSwitchingView = false;
             }).catch(function(error) {
                 console.warn(error);
-                $scope.go('/error');
+                $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
+                $scope.setNetwork();
             });
         } else if ($routeParams.articleSlug) {
             dataPromise = datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
@@ -26,7 +29,9 @@
                 $rootScope.isSwitchingView = false;
             }).catch(function(error) {
                 console.warn(error);
-                $scope.go('/error');
+                $rootScope.appReady = true;
+                $rootScope.isSwitchingView = false;
+                $scope.setNetwork();
             });
         }
 

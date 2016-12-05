@@ -19,13 +19,10 @@
             content:'\f1ce';
             color:$color-red;
             animation:rotate360 1s linear infinite;
-        }
-    }
 
-    @media (min-width:$bp-phone) {
-        width:382px;
-        height:114px;
-        margin-left:-191px;
-        margin-top:-57px;
+            @media (min-width:$bp-phone) {
+                font-size:48px;
+            }
+        }
     }
 }

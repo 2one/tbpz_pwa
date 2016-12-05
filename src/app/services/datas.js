@@ -15,10 +15,13 @@ app.service('datasSce', function($http) {
                 promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page] = $http.get(config.apiUrls.posts.replace('{slug}', categorySlug).replace('{search}', searchQuery).replace('{page}', page)).then(function(res) {
                     for (i in res.data) {
                         var item = res.data[i];
-                        var storage = localStorage.getItem('article_'+ item.slug);
+                        var storage = sessionStorage.getItem('article_'+ item.slug);
                         if (!storage) {
-                            localStorage.setItem('article_'+ item.slug, JSON.stringify(item));
+                            sessionStorage.setItem('article_'+ item.slug, JSON.stringify(item));
                         }
+                    }
+                    if (page == 1) {
+                        localStorage.setItem('articles_' + categorySlug + '_'+ searchQuery, JSON.stringify(res.data));
                     }
                     return res.data;
                 });
@@ -34,12 +37,12 @@ app.service('datasSce', function($http) {
             return promise['article_'+ id];
         },
         getArticleBySlug: function(slug) {
-            var storage = localStorage.getItem('article_'+ slug);
+            var storage = sessionStorage.getItem('article_'+ slug);
             if (storage) {
                 promise['article_'+ slug] = Promise.resolve(JSON.parse(storage));
             } else if (!promise['article_'+ slug]) {
                 promise['article_'+ slug] = $http.get(config.apiUrls.post.replace('{slug}', slug)).then(function(res) {
-                    localStorage.setItem('article_'+ slug, JSON.stringify(res.data[0]));
+                    sessionStorage.setItem('article_'+ slug, JSON.stringify(res.data[0]));
                     return res.data[0];
                 });
             }

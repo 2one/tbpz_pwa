@@ -12,10 +12,10 @@
     <div class="article__colContent">
         <div class="article__colContentWrapper">
             <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-            <div class="banner">
-                <div class="banner__image"
+            <div class="capsule">
+                <div class="capsule__image"
                      ng-style="(article.featured_image.source) ? {'background-image':'url('+ article.featured_image.attachment_meta.sizes.small.url +')'} : {}"></div>
-                <div class="banner__text">
+                <div class="capsule__text">
                     <h2 class="heading heading--2"
                         ng-if="article.title"
                         ng-bind-html="article.title"></h2>

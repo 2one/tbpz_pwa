@@ -3,7 +3,7 @@
     z-index:5;
     top:0;
     left:-105%;
-    width:320px;
+    width:260px;
     height:100%;
     background:linear-gradient(to bottom, $color-dark 66%, rgba($color-dark,0.9));
     transition:left 0.25s;
@@ -107,7 +107,7 @@
         display:flex;
         flex-direction:row;
         justify-content: space-around;
-        margin:20px 40px;
+        margin:20px;
         font-size:28px;
 
         a {

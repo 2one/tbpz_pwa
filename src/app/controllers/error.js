@@ -4,6 +4,7 @@
 
         $rootScope.appReady = true;
         $rootScope.isSwitchingView = false;
+        $scope.setNetwork();
 
     });
 

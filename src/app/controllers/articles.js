@@ -8,13 +8,21 @@
             categorySlug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '',
             searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
+        $scope.setNetwork();
         $rootScope.isSwitchingView = true;
         $scope.page = 1;
         $scope.order = '-date';
 
+        var storage = localStorage.getItem('articles_' + categorySlug + '_'+ searchQuery);
+        if (storage) {
+            $scope.articles = JSON.parse(storage);
+            $rootScope.appReady = true;
+        }
+
         $scope.load = function () {
             dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
-                if (!$scope.articles) {
+                if (!$scope.articles || storage) {
+                    storage = null;
                     $scope.articles = [];
                 }
                 $scope.articles = $scope.articles.concat(datas);
@@ -26,7 +34,7 @@
                 console.warn(error);
                 $rootScope.appReady = true;
                 $rootScope.isSwitchingView = false;
-                $scope.go('/error');
+                $scope.setNetwork();
             });
         }
         $scope.load();

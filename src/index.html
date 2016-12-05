@@ -36,7 +36,7 @@
         /build -->
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-playing': isPlaying}"
+	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-offline': isOffline, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
@@ -58,6 +58,13 @@
               ng-submit="search()">
             <input type="input" ng-model="searchQuery" class="search__input" placeholder="Recherche" id="searchInput" />
         </form>
+
+        <div class="banner">
+            <span class="banner__icon fa fa-wifi"></span>
+            <span class="banner__text">Vérifiez votre connexion internet</span>
+            <!--<span class="banner__reload fa fa-refresh"
+                ng-click="reload()"></span>-->
+        </div>
 
 		<div class="container">
 

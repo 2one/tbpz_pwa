@@ -84,6 +84,19 @@
             $scope.isPlayerReduced = false;
         };
 
+        $scope.setNetwork = function() {
+            var online = navigator.onLine;
+            if (!online) {
+                $scope.isOffline = true;
+            } else {
+                $scope.isOffline = false;
+            }
+        };
+
+        $scope.reload = function() {
+            location.reload();
+        };
+
 	});
 
 })();

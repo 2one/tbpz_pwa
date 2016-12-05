@@ -2,6 +2,7 @@
 
     app.controller('PageCtrl', function($scope, $rootScope, $routeParams, datasSce) {
 
+        $scope.setNetwork();
         $rootScope.isSwitchingView = true;
 
         dataPromise = datasSce.getPageBySlug($routeParams.pageSlug).then(function (datas) {
@@ -16,7 +17,9 @@
             $rootScope.isSwitchingView = false;
         }).catch(function(error) {
             console.warn(error);
-            $scope.go('/error');
+            $rootScope.appReady = true;
+            $rootScope.isSwitchingView = false;
+            $scope.setNetwork();
         });
 
     });

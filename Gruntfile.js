@@ -26,6 +26,12 @@ module.exports = function(grunt) {
                     src: ['**', '**/*', '!js/**', '!app/**', '!css/**'],
                     dest: 'dist',
                     filter: 'isFile'
+                },
+                {
+                    expand: true,
+                    cwd: 'src',
+                    src: ['.htaccess'],
+                    dest: 'dist'
                 }]
             },
             bowerCSS: {

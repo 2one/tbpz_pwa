@@ -1,0 +1,44 @@
+.banner {
+    position:absolute;
+    display:flex;
+    z-index:3;
+    width:100%;
+    box-sizing:border-box;
+    top:-$height-header;
+    left:0;
+    padding:12px 20px;
+    color:$color-light;
+    font-family:'Roboto';
+    font-size:13px;
+    line-height:16px;
+    background:rgba($color-dark, 0.9);
+    transition:top 0.25s;
+
+    @media (min-width:$bp-tablet) {
+        top:-$height-header-big;
+    }
+
+    body.is-offline & {
+        top:$height-header;
+
+        @media (min-width:$bp-tablet) {
+            top:$height-header-big;
+        }
+    }
+
+    &__icon {
+        flex:1 0;
+        font-size:16px;
+    }
+
+    &__text {
+        flex:10 0;
+        margin:0 5px;
+    }
+
+    &__reload {
+        flex:1 0;
+        font-size:16px;
+        color:$color-red;
+    }
+}
