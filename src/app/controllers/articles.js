@@ -9,12 +9,14 @@
             searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
         $rootScope.isSwitchingView = true;
-        $scope.articles = [];
         $scope.page = 1;
         $scope.order = '-date';
 
         $scope.load = function () {
             dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
+                if (!$scope.articles) {
+                    $scope.articles = [];
+                }
                 $scope.articles = $scope.articles.concat(datas);
                 console.log("articles:", $scope.articles);
                 $rootScope.appReady = true;

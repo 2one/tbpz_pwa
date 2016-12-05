@@ -2,13 +2,6 @@
     position:fixed;
     top:50%;
     left:50%;
-    display:block;
-    width:191px;
-    height:57px;
-    margin-left:-95px;
-    margin-top:-28px;
-    background:url('./img/loader-intro.gif') no-repeat;
-    background-size:100%;
 
     body.is-ready & {
         display:none;
@@ -17,9 +10,6 @@
     body.is-loading & {
         display:flex;
         align-items:center;
-        background:none;
-        width:auto;
-        margin: 0;
 
         &:before {
             display:inline-block;
