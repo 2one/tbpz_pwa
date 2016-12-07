@@ -6,6 +6,7 @@
             documentHeight = $document.height(),
             scrollTop = $document.scrollTop(),
             categorySlug = ($routeParams.categorySlug) ? $routeParams.categorySlug : '',
+            tagSlug = ($routeParams.tagSlug) ? $routeParams.tagSlug : '',
             searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
         $scope.setNetwork();
@@ -13,14 +14,14 @@
         $scope.page = 1;
         $scope.order = '-date';
 
-        var storage = localStorage.getItem('articles_' + categorySlug + '_'+ searchQuery);
+        var storage = localStorage.getItem('articles_' + categorySlug);
         if (storage) {
             $scope.articles = JSON.parse(storage);
             $rootScope.appReady = true;
         }
 
         $scope.load = function () {
-            dataPromise = datasSce.getArticles(categorySlug, searchQuery, $scope.page).then(function(datas) {
+            dataPromise = datasSce.getArticles(categorySlug, tagSlug, searchQuery, $scope.page).then(function(datas) {
                 if (!$scope.articles || storage) {
                     storage = null;
                     $scope.articles = [];

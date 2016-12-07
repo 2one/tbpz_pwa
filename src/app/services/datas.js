@@ -1,9 +1,12 @@
 app.service('datasSce', function($http) {
     var promise = {};
     return {
-        getArticles: function(categorySlug, searchQuery, page) {
+        getArticles: function(categorySlug, tagSlug, searchQuery, page) {
             if (!categorySlug) {
                 var categorySlug = '';
+            }
+            if (!tagSlug) {
+                var tagSlug = '';
             }
             if (!searchQuery) {
                 var searchQuery = '';
@@ -11,8 +14,8 @@ app.service('datasSce', function($http) {
             if (!page) {
                 var page = 1;
             }
-            if (!promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page]) {
-                promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page] = $http.get(config.apiUrls.posts.replace('{slug}', categorySlug).replace('{search}', searchQuery).replace('{page}', page)).then(function(res) {
+            if (!promise['articles_' + categorySlug + '_'+ tagSlug + '_'+ searchQuery + '_page' + page]) {
+                promise['articles_' + categorySlug + '_'+ tagSlug + '_'+ searchQuery + '_page' + page] = $http.get(config.apiUrls.posts.replace('{slug}', categorySlug).replace('{tag}', tagSlug).replace('{search}', searchQuery).replace('{page}', page)).then(function(res) {
                     for (i in res.data) {
                         var item = res.data[i];
                         var storage = sessionStorage.getItem('article_'+ item.slug);
@@ -20,21 +23,13 @@ app.service('datasSce', function($http) {
                             sessionStorage.setItem('article_'+ item.slug, JSON.stringify(item));
                         }
                     }
-                    if (page == 1) {
-                        localStorage.setItem('articles_' + categorySlug + '_'+ searchQuery, JSON.stringify(res.data));
+                    if (!tagSlug && !searchQuery && page == 1) {
+                        localStorage.setItem('articles_' + categorySlug, JSON.stringify(res.data));
                     }
                     return res.data;
                 });
             }
-            return promise['articles_' + categorySlug + '_'+ searchQuery + '_page' + page];
-        },
-        getArticleById: function(id) {
-            if (!promise['article_'+ id]) {
-                promise['article_'+ id] = $http.get(config.apiUrls.singlepost.replace('{ID}', id)).then(function(res) {
-                    return res.data;
-                });
-            }
-            return promise['article_'+ id];
+            return promise['articles_' + categorySlug + '_'+ tagSlug + '_'+ searchQuery + '_page' + page];
         },
         getArticleBySlug: function(slug) {
             var storage = sessionStorage.getItem('article_'+ slug);
@@ -63,14 +58,6 @@ app.service('datasSce', function($http) {
                 });
             }
             return promise['page_'+ slug];
-        },
-        getNavG: function() {
-            if (!promise['nav']) {
-                promise['nav'] = $http.get(config.apiUrls.nav).then(function(res) {
-                    return res.data;
-                });
-            }
-            return promise['nav'];
         }
     };
 });

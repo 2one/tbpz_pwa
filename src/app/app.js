@@ -15,14 +15,14 @@ var app;
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
-        when('/article/:articleId', {
-            slug: 'article',
-            templatePage: 'single',
-            templateUrl: config.viewsPath +'article.html',
-            controller: 'ArticleCtrl'
-        }).
         when('/category/:categorySlug', {
             slug: 'category',
+            templatePage: 'listing',
+            templateUrl: config.viewsPath +'articles.html',
+            controller: 'ArticlesCtrl'
+        }).
+        when('/tag/:tagSlug', {
+            slug: 'tag',
             templatePage: 'listing',
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
