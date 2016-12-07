@@ -14,7 +14,7 @@
         $scope.page = 1;
         $scope.order = '-date';
 
-        var storage = localStorage.getItem('articles_' + categorySlug);
+        var storage = localStorage.getItem('articles_' + categorySlug + '_' + tagSlug + '_' + searchQuery);
         if (storage) {
             $scope.articles = JSON.parse(storage);
             $rootScope.appReady = true;
@@ -44,7 +44,7 @@
         angular.element(window).on('scroll', function () {
             scrollTop = $document.scrollTop();
             documentHeight = $document.height();
-            if (scrollTop + 60 >= documentHeight - windowHeight && !$scope.loadingNext && $scope.page < 10 && ['home', 'category', 'search'].indexOf($scope.slug) > -1) {
+            if (scrollTop + 60 >= documentHeight - windowHeight && !$scope.loadingNext && $scope.page < 10 && $scope.templatePage == 'listing') {
                 $scope.loadingNext = true;
                 $scope.page++;
                 $scope.load();

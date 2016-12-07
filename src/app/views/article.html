@@ -1,6 +1,7 @@
 <article class="article"
     ng-if="article">
-    <div class="article__colDate">
+    <div class="article__colDate"
+        ng-if="article.type != 'page'">
         <div class="article__colDateWrapper">
             <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
         </div>
@@ -12,7 +13,8 @@
     </div>
     <div class="article__colContent">
         <div class="article__colContentWrapper">
-            <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+            <span class="date"
+                  ng-if="article.type != 'page'">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
             <div class="capsule">
                 <div class="capsule__image"
                      ng-style="(article.featured_image.source) ? {'background-image':'url('+ article.featured_image.attachment_meta.sizes.small.url +')'} : {}"></div>
@@ -24,13 +26,14 @@
             </div>
 
             <div class="paragraph">
-                <div class="article__share" ng-controller="ShareCtrl">
+                <div class="article__share" ng-controller="ShareCtrl"
+                     ng-if="article.type != 'page'">
                     <a href class="share share--tiny share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
                     <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
                     <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
                 </div>
                 <div class="article__author"
-                     ng-if="article.author.name">Par <strong>{{article.author.name}}</strong></div>
+                     ng-if="article.type != 'page' && article.author.name">Par <strong>{{article.author.name}}</strong></div>
                 <div
                     ng-bind-html="article.content | parseLinks"></div>
             </div>

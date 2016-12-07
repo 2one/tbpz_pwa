@@ -33,12 +33,6 @@ var app;
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
-        when('/page/:pageSlug', {
-            slug: 'page',
-            templatePage: 'single',
-            templateUrl: config.viewsPath +'page.html',
-            controller: 'PageCtrl'
-        }).
         when('/error', {
             slug: 'error',
             templatePage: 'error',
