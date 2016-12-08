@@ -48,10 +48,6 @@
             }
         };
 
-        $scope.back = function() {
-            console.log($location);
-        };
-
         $scope.toggleSearch = function() {
             $rootScope.isNavigating = false;
             $rootScope.isSearching = $rootScope.isSearching ? false : true;
@@ -71,6 +67,9 @@
 
         $scope.clickLogo = function($event) {
             $scope.go('/', $event);
+        };
+
+        $scope.scrollToTop = function($event) {
             jQuery("html, body").animate({scrollTop:0}, 'slow');
         };
 
