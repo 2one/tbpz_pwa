@@ -181,8 +181,8 @@ module.exports = function(grunt) {
                 },
                 options: {
                     watchTask: true,
-                    server: './dist'/*,
-                    https: true,*/
+                    server: './dist',
+                    https: true,
                 }
             }
         },

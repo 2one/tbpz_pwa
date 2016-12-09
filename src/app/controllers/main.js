@@ -1,6 +1,6 @@
 (function() {
 
-	app.controller('MainCtrl', function($scope, $rootScope, $location, $window) {
+	app.controller('MainCtrl', function($scope, $rootScope, $location, $document, $window) {
 
 		var items,
 			dataPromise = {};
@@ -95,6 +95,18 @@
         $scope.reload = function() {
             location.reload();
         };
+
+        var windowHeight = $(window).height();
+        var documentHeight = $document.height();
+        var $scrollTop = angular.element(".js-scrollTop");
+        angular.element(window).on('scroll', function () {
+            scrollTop = $document.scrollTop();
+            if (scrollTop >= windowHeight) {
+                $scrollTop.addClass("is-active");
+            } else {
+                $scrollTop.removeClass("is-active");
+            }
+        });
 
 	});
 

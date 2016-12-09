@@ -17,7 +17,7 @@
                   ng-if="article.type != 'page'">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
             <div class="capsule">
                 <div class="capsule__image"
-                     ng-style="(article.featured_image.source) ? {'background-image':'url('+ article.featured_image.attachment_meta.sizes.small.url +')'} : {}"></div>
+                     ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}"></div>
                 <div class="capsule__text">
                     <h2 class="heading heading--2"
                         ng-if="article.title"
@@ -35,7 +35,7 @@
                 <div class="article__author"
                      ng-if="article.type != 'page' && article.author.name">Par <strong>{{article.author.name}}</strong></div>
                 <div
-                    ng-bind-html="article.content | parseLinks"></div>
+                    ng-bind-html="article.content | parseLinks | parseSources"></div>
             </div>
         </div>
     </div>

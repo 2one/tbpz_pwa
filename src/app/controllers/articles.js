@@ -37,19 +37,21 @@
                 $rootScope.isSwitchingView = false;
                 $scope.setNetwork();
             });
-        }
+        };
         $scope.load();
 
-        angular.element(window).off('scroll');
-        angular.element(window).on('scroll', function () {
+        var documentHeight = $document.height();
+        $scope.infiniteScroll = function () {
             scrollTop = $document.scrollTop();
-            documentHeight = $document.height();
             if (scrollTop + 60 >= documentHeight - windowHeight && !$scope.loadingNext && $scope.page < 10 && $scope.templatePage == 'listing') {
                 $scope.loadingNext = true;
                 $scope.page++;
                 $scope.load();
             }
-        });
+        };
+
+        angular.element(window).off('scroll', $scope.infiniteScroll);
+        angular.element(window).on('scroll', $scope.infiniteScroll);
 
     });
 
