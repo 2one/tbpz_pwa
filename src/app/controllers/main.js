@@ -28,6 +28,7 @@
 
         $scope.openNav = function() {
             $rootScope.isSearching = false;
+            $rootScope.isMenuopening = false;
             $rootScope.isNavigating = true;
         };
 
@@ -41,15 +42,18 @@
                     $window.history.back();
                 } else {
                     $scope.go('/');
+                    return;
                 }
             } else {
-                $rootScope.isSearching = false;
                 $rootScope.isNavigating = $rootScope.isNavigating ? false : true;
             }
+            $rootScope.isSearching = false;
+            $rootScope.isMenuopening = false;
         };
 
         $scope.toggleSearch = function() {
             $rootScope.isNavigating = false;
+            $rootScope.isMenuopening = false;
             $rootScope.isSearching = $rootScope.isSearching ? false : true;
             if ($rootScope.isSearching) {
                 angular.element('#searchInput').focus();
@@ -58,8 +62,17 @@
             }
         };
 
+        $scope.toggleMenu = function() {
+            $rootScope.isNavigating = false;
+            $rootScope.isSearching = false;
+            $rootScope.isMenuopening = $rootScope.isMenuopening ? false : true;
+        };
+
         $scope.go = function(path, $event) {
             $location.path(path);
+            $rootScope.isNavigating = false;
+            $rootScope.isSearching = false;
+            $rootScope.isMenuopening = false;
             if ($event) {
                 $event.preventDefault();
             }
@@ -92,9 +105,43 @@
             }
         };
 
-        $scope.reload = function() {
+        /*$scope.reload = function() {
             location.reload();
+        };*/
+
+        $scope.copyLocation = function() {
+            var textArea = document.createElement("textarea");
+            textArea.value = location.href;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (error) {
+                console.log(error);
+            }
+            document.body.removeChild(textArea);
+            $rootScope.isMenuopening = false;
         };
+
+        /*$scope.addToHomescreen = function() {
+            if (deferredPrompt !== undefined) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function(choiceResult) {
+                    console.log(choiceResult.outcome);
+                    if (choiceResult.outcome == 'dismissed') {
+                        ga('send', 'event', 'add2homescreen_ko', 'click', 'prompt');
+                        console.log('User cancelled home screen install');
+                    }
+                    else {
+                        ga('send', 'event', 'add2homescreen_ok', 'click', 'prompt');
+                        console.log('User added to home screen');
+                    }
+                    deferredPrompt = null;
+                    $scope.add2HomescreenReady = false;
+                });
+            }
+            $rootScope.isMenuopening = false;
+        };*/
 
         var windowHeight = $(window).height();
         var documentHeight = $document.height();

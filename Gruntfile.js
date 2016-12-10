@@ -2,10 +2,13 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
+    var packageJson = require('./package.json');
 
     var env = grunt.option('env') || "dev";
 
+    var d = new Date();
     var timestamp = Date.now();
+    var date = d.toISOString();
     var assetsPath = (env == 'dev') ? './' : '/tbpz_pwa/';
 
     console.log(" ");
@@ -111,13 +114,15 @@ module.exports = function(grunt) {
                     data: {
                         assetsPath: assetsPath,
                         timestamp: timestamp,
+                        date: date,
+                        version: packageJson.version,
                         env: env
                     }
                 },
                 files: [{
                     expand: true,
                     cwd: 'src',
-                    src: ['index.html'],
+                    src: ['index.html', 'sw.js'],
                     dest: 'dist'
                 }]
             }
@@ -268,6 +273,23 @@ module.exports = function(grunt) {
                     'dist/index.html': 'dist/index.html'
                 }
             }
+        },
+
+        'sw-precache': {
+            options: {
+                baseDir: 'dist',
+                cacheId: 'TBPZPWA-'+ packageJson.version,
+                workerFileName: 'sw.js',
+                verbose: true
+            },
+            default: {
+                staticFileGlobs: [
+                    '/',
+                    'index.html',
+                    'font/**/*.{woff,ttf,svg,eot}',
+                    'img/**/*.{ico,png,jpg,svg}',
+                ]
+            }
         }
 
     });
@@ -279,7 +301,7 @@ module.exports = function(grunt) {
     grunt.registerTask('serve', ['browserSync', 'watch']);
     grunt.registerTask('compile', ['clean:before', 'css', 'js', 'html']);
     grunt.registerTask('test', ['htmlhint', /*'csslint',*/ /*'jshint',*/ /*'lintspaces'*/]);
-    grunt.registerTask('publish', ['compile', 'test', 'clean:after', 'htmlmin']);
+    grunt.registerTask('publish', ['compile', 'test', 'clean:after', 'htmlmin'/*, 'sw-precache'*/]);
     grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
     grunt.registerTask('gh-deploy', ['publish', 'gh-pages']);
     grunt.registerTask('default', ['compile', 'serve']);

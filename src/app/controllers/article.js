@@ -10,6 +10,7 @@
                     if (!datas.length) {
                         $scope.article = datas;
                         $scope.go('/error/404');
+                        return;
                     } else {
                         $scope.article = datas[0];
                         console.log("page:", $scope.article);

@@ -19,6 +19,7 @@
         <meta name="twitter:site" content="@TheBackPackerz">
         <meta name="twitter:creator" content="@TheBackPackerz">
         <link rel="canonical" href="http://thebackpackerz.com/">
+        <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="#222421">
         <meta name="apple-mobile-web-app-title" content="TBPZ">
@@ -36,7 +37,7 @@
         /build -->
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-offline': isOffline, 'is-playing': isPlaying}"
+	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-offline': isOffline, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
@@ -51,13 +52,23 @@
             <a href class="header__icon header__icon--glass" onclick="ga('send', 'event', 'search', 'click', 'header buttons')"
                ng-click="toggleSearch()"></a>
             <a href class="header__icon header__icon--ellipsis" onclick="ga('send', 'event', 'ellipsis', 'click', 'header buttons')"
-               ng-click="toggleMenu()"></a>
+               ng-click="toggleMenu()">
+            </a>
         </header>
 
         <form class="search" autocomplete="off"
               ng-submit="search()">
             <input type="input" ng-model="searchQuery" class="search__input" placeholder="Recherche" id="searchInput" />
         </form>
+
+        <ul class="menu">
+            <!--<li class="menu__item" onclick="ga('send', 'event', 'add2homescreen', 'click', 'menu buttons')"
+                ng-click="addToHomescreen()">Ajouter à l'écran d'accueil</li>-->
+            <li class="menu__item" onclick="ga('send', 'event', 'copylocation', 'click', 'menu buttons')"
+                ng-click="copyLocation()">Copier l'adresse de la page</li>
+            <li class="menu__item" onclick="ga('send', 'event', 'settings', 'click', 'menu buttons')"
+                ng-click="go('/page/settings')">Paramètres</li>
+        </ul>
 
         <div class="banner">
             <span class="banner__icon fa fa-wifi"></span>

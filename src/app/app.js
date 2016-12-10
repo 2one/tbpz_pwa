@@ -2,7 +2,7 @@ var app;
 
 (function() {
 
-	app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngTouch', 'ngAnimate']);
+	app = angular.module('app', ['ngRoute', 'ngSanitize', 'ngTouch']);
 
     app.config(['$locationProvider', '$routeProvider', '$sceProvider', function($locationProvider, $routeProvider, $sceProvider) {
         $locationProvider.html5Mode(true).hashPrefix('!');
@@ -33,16 +33,22 @@ var app;
             templateUrl: config.viewsPath +'articles.html',
             controller: 'ArticlesCtrl'
         }).
-        when('/error', {
+        when('/bookmarks', {
+            slug: 'bookmarks',
+            templatePage: 'listing',
+            templateUrl: config.viewsPath +'articles.html',
+            controller: 'ArticlesCtrl'
+        }).
+        when('/page/:pageSlug', {
+            slug: 'page',
+            templatePage: 'page',
+            templateUrl: config.viewsPath +'page.html',
+            controller: 'PageCtrl'
+        }).
+        when('/error/:errorId', {
             slug: 'error',
             templatePage: 'error',
             templateUrl: config.viewsPath +'error.html',
-            controller: 'ErrorCtrl'
-        }).
-        when('/error/404', {
-            slug: 'error',
-            templatePage: 'error',
-            templateUrl: config.viewsPath +'error-404.html',
             controller: 'ErrorCtrl'
         }).
         when('/:articleSlug', {
@@ -52,7 +58,7 @@ var app;
             controller: 'ArticleCtrl'
         }).
         otherwise({
-            redirectTo: '/'
+            redirectTo: '/error/404'
         });
     }]);
 
@@ -68,6 +74,7 @@ var app;
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
             $scope.isSearching = false;
+            $scope.isMenuopening = false;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
@@ -80,10 +87,25 @@ var app;
 
 	}]);
 
-    /*if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register('./sw.js')
-            .then(function() { console.log('Service Worker Registered'); });
-    }*/
+            .then(function() {
+                console.log('Service Worker Registered');
+            });
+
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.userChoice.then(function(choiceResult) {
+                if (choiceResult.outcome == 'dismissed') {
+                    ga('send', 'event', 'add2homescreen_ko', 'click', 'prompt');
+                    console.log('User cancelled home screen install');
+                } else {
+                    ga('send', 'event', 'add2homescreen_ok', 'click', 'prompt');
+                    console.log('User added to home screen');
+                }
+            });
+        });
+
+    }
 
 })();

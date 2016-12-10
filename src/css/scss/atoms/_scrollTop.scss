@@ -10,7 +10,7 @@
     line-height:1;
     text-decoration:none;
     color:$color-red;
-    text-shadow:0px 0px 10px #000;
+    text-shadow:0px 0px 0px #000;
     text-align:center;
     border-radius:100%;
     cursor:pointer;
@@ -22,14 +22,10 @@
         height:60px;
     }
 
-    &:hover {
-        text-shadow:0px 0px 1px #000;
-    }
-
     &:before {
         display:inline-block;
         flex: 1 0;
-        font-size:32px;
+        font-size:40px;
         font-family: FontAwesome;
         content:'\f102';
 
