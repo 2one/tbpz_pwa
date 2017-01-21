@@ -32,7 +32,8 @@
         flex: 1 0;
         font-size:20px;
         font-family: FontAwesome;
-        content:'\f001';
+        content:'\f04b';
+        padding-left: 2px;
 
         @media (min-width:$bp-phone) {
             font-size:32px;
