@@ -9,7 +9,7 @@
 	left:0;
     padding:0 15px;
     box-sizing:border-box;
-    background:linear-gradient(to right, $color-red, lighten($color-red, 15%));
+    background:$color-gradientred;
     text-align:center;
     transition:height 0.25s;
 
@@ -46,7 +46,7 @@
 
         &--burger {
             body.is-navigating & {
-                color:darken($color-red, 15%);
+                color:$color-darkred;
             }
 
             &:before {
@@ -63,7 +63,7 @@
 
         &--glass {
             body.is-searching & {
-                color:darken($color-red, 15%);
+                color:$color-darkred;
             }
 
             &:before {
@@ -81,7 +81,7 @@
             }
 
             body.is-menuopening & {
-                color:darken($color-red, 15%);
+                color:$color-darkred;
             }
 
             &:before {
@@ -99,6 +99,6 @@
         width:100%;
         left:0;
         bottom:-3px;
-        background:linear-gradient(to bottom, rgba(#000,0.5), transparent);
+        background:linear-gradient(to bottom, rgba($color-black,0.5), transparent);
     }
 }

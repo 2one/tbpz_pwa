@@ -1,17 +1,10 @@
-.article {
-    max-width:100%;
-    box-sizing:border-box;
-    position:relative;
+.tpl-single {
 
-    &:first-child {
-        margin-top:$height-header;
-
-        @media (min-width:$bp-tablet) {
-            margin-top:$height-header-big;
-        }
+    .container__grid {
+        background:$color-light;
     }
 
-    &__colDate {
+    .container__sidecol {
         position:relative;
         float:left;
         text-align:center;
@@ -69,7 +62,7 @@
 
     }
 
-    &__colContent {
+    .container__maincol {
         float:none;
         padding:0;
         width:auto;

@@ -1,11 +1,11 @@
 /* VENDORS */
+@import '../../node_modules/node.normalize.scss/_normalize';
 @import '../../node_modules/font-awesome/scss/font-awesome';
 
 /* BASE */
-@import "base/_config";
-@import "base/_normalize";
-@import "base/_layout";
-@import "base/_animations";
+@import "_config";
+@import "_body";
+@import "_animations";
 
 /* ATOMS */
 @import "atoms/_share";
@@ -24,14 +24,17 @@
 @import "molecules/_capsule";
 @import "molecules/_error";
 @import "molecules/_checklist";
+@import "molecules/_banner";
+@import "molecules/_search";
+@import "molecules/_menu";
+@import "molecules/_player";
 
 /* ORGANISMS */
 @import "organisms/_header";
-@import "organisms/_navG";
-@import "organisms/_content";
-@import "organisms/_article";
-@import "organisms/_page";
-@import "organisms/_search";
-@import "organisms/_menu";
-@import "organisms/_banner";
-@import "organisms/_player";
+@import "organisms/_nav";
+@import "organisms/_container";
+
+/* TEMPLATES */
+@import "templates/_tpl-listing";
+@import "templates/_tpl-single";
+@import "templates/_tpl-page";

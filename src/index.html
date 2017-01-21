@@ -37,7 +37,8 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
 	</head>
 
-	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-offline': isOffline, 'is-playing': isPlaying}"
+	<body class="tpl-{{templatePage}}"
+          ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-offline': isOffline, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
@@ -48,7 +49,7 @@
         <banner-component></banner-component>
 
 		<div class="container">
-			<section class="content"
+			<section class="container__view"
                      ng-view
                      autoscroll="true">
 			</section>

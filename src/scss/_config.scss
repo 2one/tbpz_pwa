@@ -9,6 +9,8 @@ $color-lighter: #e3e3e3;
 $color-lighter-2: #b3b3b3;
 $color-lightest: #eeeeee;
 $color-red: #B92B2B;
+$color-gradientred: linear-gradient(to right, $color-red, lighten($color-red, 15%));
+$color-darkred: darken($color-red, 15%);
 
 /* FONTS */
 

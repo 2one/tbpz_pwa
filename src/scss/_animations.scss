@@ -1,0 +1,19 @@
+@keyframes rotate360 {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes burger2back {
+    from {
+        transform:rotate(0deg);
+        content:'\f0c9',
+    }
+    to {
+        transform:rotate(180deg);
+        content:'\f060';
+    }
+}

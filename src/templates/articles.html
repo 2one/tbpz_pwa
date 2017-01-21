@@ -1,29 +1,31 @@
-<article class="article"
-         ng-if="articles.length"
-         ng-repeat="(index, article) in articles | orderBy:order">
-    <div class="article__colDate">
-        <div class="article__colDateWrapper">
-            <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+<section class="container__grid">
+    <article class="container__row"
+             ng-if="articles.length"
+             ng-repeat="(index, article) in articles | orderBy:order">
+        <div class="container__sidecol">
+            <div class="container__sidecolWrapper">
+                <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+            </div>
         </div>
-    </div>
-    <div class="article__colContent">
-        <div class="article__colContentWrapper"
-            ng-click="go('/' + article.slug)">
-            <div class="capsule">
-                <div class="capsule__image"
-                     ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
-                    <span class="tag">News</span>
-                    <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-                </div>
-                <div class="capsule__text">
-                    <h2 class="heading heading--2"
-                        ng-if="article.title"
-                        ng-bind-html="article.title"></h2>
+        <div class="container__maincol">
+            <div class="container__maincolWrapper"
+                ng-click="go('/' + article.slug)">
+                <div class="capsule">
+                    <div class="capsule__image"
+                         ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
+                        <span class="tag">News</span>
+                        <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+                    </div>
+                    <div class="capsule__text">
+                        <h2 class="heading heading--2"
+                            ng-if="article.title"
+                            ng-bind-html="article.title"></h2>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</article>
+    </article>
+</section>
 <div class="error"
      ng-if="slug == 'search' && !isSwitchingView && !articles.length"
      ng-include="config.incPath + 'noresult.html'"></div>

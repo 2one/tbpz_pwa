@@ -1,8 +1,10 @@
-<div class="error"
-     ng-if="errorId"
-     ng-include="config.incPath + 'error-' + errorId + '.html'">
-</div>
-<div class="error"
-     ng-if="!errorId"
-     ng-include="config.incPath + 'error-unknown.html'">
-</div>
+<section class="container__grid">
+    <div class="error"
+         ng-if="errorId"
+         ng-include="config.incPath + 'error-' + errorId + '.html'">
+    </div>
+    <div class="error"
+         ng-if="!errorId"
+         ng-include="config.incPath + 'error-unknown.html'">
+    </div>
+</section>

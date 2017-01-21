@@ -1,11 +1,11 @@
-.navG {
+.nav {
     position:fixed;
     z-index:5;
     top:0;
     left:-105%;
     width:260px;
     height:100%;
-    background:linear-gradient(to bottom, $color-dark 66%, rgba($color-dark,0.9));
+    background:$color-gradientred;
     background:rgba($color-red, 0.9);
     transition:left 0.25s;
 
@@ -17,7 +17,7 @@
         width:10px;
         top:0;
         right:-10px;
-        background:linear-gradient(to right, rgba(#000,0.5), transparent);
+        background:linear-gradient(to right, rgba($color-black,0.5), transparent);
     }
 
     body.is-navigating & {
@@ -54,9 +54,6 @@
             font-weight:900;
             font-style: italic;
             text-transform: uppercase;
-            &:hover {
-                color:$color-red;
-            }
         }
 
         &--home {
@@ -112,10 +109,7 @@
         font-size:28px;
 
         a {
-            color:$color-light;
-            &:hover {
-                color:$color-red;
-            }
+            color:$color-white;
         }
     }
 }
