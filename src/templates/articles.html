@@ -6,11 +6,6 @@
     <article class="container__row"
              ng-if="articles.length"
              ng-repeat="(index, article) in articles | orderBy:order">
-        <div class="container__sidecol">
-            <div class="container__sidecolWrapper">
-                <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-            </div>
-        </div>
         <div class="container__maincol">
             <div class="container__maincolWrapper"
                 ng-click="go('/' + article.slug)">

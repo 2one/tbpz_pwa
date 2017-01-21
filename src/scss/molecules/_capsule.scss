@@ -17,12 +17,17 @@
     	position:relative;
     	z-index:1;
     	width:100%;
+        box-sizing:border-box;
         padding:5px 10px;
         background-color:$color-white;
         text-align:left;
 	    .heading {
             color:$color-black;
 	    }
+
+        @media (min-width:$bp-phablet) {
+            padding:5px 0;
+        }
     }
 
     .tag {

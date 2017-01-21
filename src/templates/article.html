@@ -1,17 +1,6 @@
 <section class="container__grid">
     <article class="container__row"
         ng-if="article">
-        <div class="container__sidecol"
-            ng-if="article.type != 'page'">
-            <div class="container__sidecolWrapper">
-                <span class="date date--formated">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-            </div>
-            <div class="article__share" ng-controller="ShareCtrl">
-                <a href class="share share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
-                <a href class="share share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
-                <a href class="share share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
-            </div>
-        </div>
         <div class="container__maincol">
             <div class="container__maincolWrapper">
                 <div class="capsule">
@@ -37,8 +26,6 @@
                         <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
                         <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
                     </div>
-                    <div class="author"
-                         ng-if="article.type != 'page' && article.author.name">Par <strong>{{article.author.name}}</strong></div>
                     <div
                         ng-bind-html="article.content | parseContent"></div>
                 </div>
