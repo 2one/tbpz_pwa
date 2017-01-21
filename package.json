@@ -49,10 +49,8 @@
     "test": "npm run test:unit && npm run test:e2e"
   },
   "pre-commit": [
-    "lint"
   ],
   "pre-push": [
-    "test"
   ],
   "engines": {
     "node": ">=4.0.0"
