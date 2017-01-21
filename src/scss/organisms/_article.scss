@@ -179,20 +179,6 @@
             }
         }
 
-        .date {
-            display:block;
-            padding:10px 0;
-            word-spacing:initial;
-            background:$color-dark;
-            color:$color-white;
-            font-size:14px;
-            border-bottom:1px solid $color-lighter;
-
-            @media (min-width:$bp-phone) {
-                display:none;
-            }
-        }
-
         .media,
         .embed,
         .diaporama {

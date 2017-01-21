@@ -2,16 +2,20 @@
     position:absolute;
     z-index:3;
     width:100%;
+    height:0;
     box-sizing:border-box;
-    height:$height-header;
-    top:-$height-header;
+    overflow:hidden;
+    top:$height-header;
     left:0;
-    padding:12px 20px;
-    background:rgba($color-dark, 0.9);
-    transition:top 0.25s;
+    background:linear-gradient(to right, $color-red, lighten($color-red, 15%));
+    transition:height 0.25s;
 
     @media (min-width:$bp-tablet) {
-        top:-$height-header-big;
+        top:$height-header-big;
+    }
+
+    &__wrapper {
+        padding:12px 20px;
     }
 
     &__input {
@@ -29,10 +33,10 @@
     }
 
     body.is-searching & {
-        top:$height-header;
+        height:$height-header;
 
         @media (min-width:$bp-tablet) {
-            top:$height-header-big;
+            height:$height-header-big;
         }
     }
 }

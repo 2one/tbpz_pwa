@@ -12,7 +12,9 @@
 
     <form class="search" autocomplete="off"
           ng-submit="search()">
-        <input type="input" ng-model="searchQuery" class="search__input" placeholder="Enter what you lookin for yo!" id="searchInput" />
+        <div class="search__wrapper">
+            <input type="input" ng-model="searchQuery" class="search__input" placeholder="Enter what you lookin for yo!" id="searchInput" />
+        </div>
     </form>
 
     <ul class="menu">
