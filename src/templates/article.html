@@ -16,9 +16,10 @@
             <div class="container__maincolWrapper">
                 <div class="capsule">
                     <div class="capsule__image"
+                         ng-if="article.type != 'page' && article.terms.category[0].name != 'NEWS'"
                          ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
                         <div ng-if="article.type != 'page'">
-                            <span class="tag">News</span>
+                            <span class="tag">{{article.terms.category[0].name}}</span>
                             <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
                         </div>
                     </div>
@@ -36,7 +37,7 @@
                         <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
                         <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
                     </div>
-                    <div class="article__author"
+                    <div class="author"
                          ng-if="article.type != 'page' && article.author.name">Par <strong>{{article.author.name}}</strong></div>
                     <div
                         ng-bind-html="article.content | parseContent"></div>

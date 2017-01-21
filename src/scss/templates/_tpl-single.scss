@@ -1,7 +1,7 @@
 .tpl-single {
 
     .container__grid {
-        background:$color-light;
+        background:$color-white;
     }
 
     .container__sidecol {
@@ -200,13 +200,10 @@
             }
         }
 
-    }
+        .capsule {
+            margin-bottom:15px;
+        }
 
-    &__author {
-        font-style:italic;
-        margin:15px 0;
-        color:$color-dark;
-        font-size:15px;
     }
 
     &:after {

@@ -1,4 +1,8 @@
 <section class="container__grid">
+    <h1 class="container__row pageTitle"
+        ng-if="slug == 'category'">
+        {{articles[0].terms.category[0].name}}
+    </h1>
     <article class="container__row"
              ng-if="articles.length"
              ng-repeat="(index, article) in articles | orderBy:order">
@@ -13,7 +17,7 @@
                 <div class="capsule">
                     <div class="capsule__image"
                          ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
-                        <span class="tag">News</span>
+                        <span class="tag">{{article.terms.category[0].name}}</span>
                         <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
                     </div>
                     <div class="capsule__text">
