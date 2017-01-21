@@ -31,54 +31,23 @@
         <meta name="application-name" content="TBPZ">
         <meta name="theme-color" content="#222421">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic" />
-        <!-- build:css inline style.min.css
-        <link rel="stylesheet" type="text/css" href="../dist/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="../dist/css/style.min.css" />
-        /build -->
+        <!-- _build:css inline style.css
+        <link rel="stylesheet" type="text/css" href="../dist/css/style.css" />
+        /_build -->
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
 	</head>
 
 	<body ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-offline': isOffline, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
-		<nav nav-g class="navG"></nav>
+        <nav-component></nav-component>
 
-        <header class="header is-reduced">
-            <a href class="header__icon header__icon--burger" onclick="ga('send', 'event', 'burger', 'click', 'header buttons')"
-               ng-class="{'header__icon--back': templatePage == 'single'}"
-               ng-click="toggleNav()"></a>
-            <a href="/" class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
-                ng-click="clickLogo($event)"></a>
-            <a href class="header__icon header__icon--glass" onclick="ga('send', 'event', 'search', 'click', 'header buttons')"
-               ng-click="toggleSearch()"></a>
-            <a href class="header__icon header__icon--ellipsis" onclick="ga('send', 'event', 'ellipsis', 'click', 'header buttons')"
-               ng-click="toggleMenu()">
-            </a>
-        </header>
+        <header-component></header-component>
 
-        <form class="search" autocomplete="off"
-              ng-submit="search()">
-            <input type="input" ng-model="searchQuery" class="search__input" placeholder="Recherche" id="searchInput" />
-        </form>
-
-        <ul class="menu">
-            <!--<li class="menu__item" onclick="ga('send', 'event', 'add2homescreen', 'click', 'menu buttons')"
-                ng-click="addToHomescreen()">Ajouter à l'écran d'accueil</li>-->
-            <li class="menu__item" onclick="ga('send', 'event', 'copylocation', 'click', 'menu buttons')"
-                ng-click="copyLocation()">Copier l'adresse de la page</li>
-            <li class="menu__item" onclick="ga('send', 'event', 'settings', 'click', 'menu buttons')"
-                ng-click="go('/page/settings')">Paramètres</li>
-        </ul>
-
-        <div class="banner">
-            <span class="banner__icon fa fa-wifi"></span>
-            <span class="banner__text">Vérifiez votre connexion internet</span>
-            <!--<span class="banner__reload fa fa-refresh"
-                ng-click="reload()"></span>-->
-        </div>
+        <banner-component></banner-component>
 
 		<div class="container">
-
 			<section class="content"
                      ng-view
                      autoscroll="true">
@@ -90,7 +59,6 @@
             <a href class="bubble"
                ng-class="{'is-active': isPlayerReady}"
                ng-click="loadPlayer()"></a>
-
 		</div>
 
         <div class="loader"></div>
@@ -110,11 +78,9 @@
                     width="100%" height="232" frameborder="0"></iframe>
         </section>
 
-        <!-- build:js inline scripts.min.js
-        <script src="../dist/js/vendors.min.js"></script>
-		<script src="../dist/js/scripts.js"></script>
+        <!-- _build:js inline app.js
 		<script src="../dist/js/app.js"></script>
-		<script src="../dist/js/app.templates.js"></script>
-        /build -->
+        /_build -->
+        <script src="./js/script.js"></script>
 	</body>
 </html>
