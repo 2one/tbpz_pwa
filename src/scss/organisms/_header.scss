@@ -9,7 +9,7 @@
 	left:0;
     padding:0 15px;
     box-sizing:border-box;
-    background:rgba($color-dark, 0.9);
+    background:linear-gradient(to right, $color-red, lighten($color-red, 15%));
     text-align:center;
     transition:height 0.25s;
 
@@ -28,7 +28,7 @@
 
     &__icon {
         display:inline-block;
-        color:$color-red;
+        color:$color-white;
         font-size:22px;
         text-decoration:none;
         transition:color linear 0.1s;
@@ -46,7 +46,7 @@
 
         &--burger {
             body.is-navigating & {
-                color:#FFF;
+                color:darken($color-red, 15%);
             }
 
             &:before {
@@ -63,7 +63,7 @@
 
         &--glass {
             body.is-searching & {
-                color:#FFF;
+                color:darken($color-red, 15%);
             }
 
             &:before {
@@ -71,7 +71,7 @@
             }
         }
 
-        &--ellipsis {
+        &--settings {
             cursor:pointer;
             margin-left:15px;
             margin-top:2px;
@@ -81,11 +81,11 @@
             }
 
             body.is-menuopening & {
-                color:#FFF;
+                color:darken($color-red, 15%);
             }
 
             &:before {
-                content:'\f142';
+                content:'\f1de';
             }
 
         }

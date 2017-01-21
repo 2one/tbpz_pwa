@@ -6,6 +6,7 @@
     width:260px;
     height:100%;
     background:linear-gradient(to bottom, $color-dark 66%, rgba($color-dark,0.9));
+    background:rgba($color-red, 0.9);
     transition:left 0.25s;
 
     &:after {

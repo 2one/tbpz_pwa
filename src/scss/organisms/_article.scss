@@ -162,7 +162,12 @@
                     }
                 }
 
-                iframe, img, .wp-caption {
+                iframe {
+                    margin:15px 0;
+                    max-width:100%;
+                }
+
+                img, .wp-caption {
                     margin:15px 0;
                     max-width:100%;
                     height:initial;
