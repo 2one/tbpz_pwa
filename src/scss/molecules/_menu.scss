@@ -12,10 +12,9 @@
     padding:20px;
     box-shadow:0 0 3px $color-black;
     border-radius:2px;
-    opacity:0;
-    z-index:-1;
-    transition:opacity linear 0.1s;
+    z-index:11;
     text-align:left;
+    display:none;
 
     @media (min-width:$bp-tablet) {
         top:$height-header-big + 5px;
@@ -38,7 +37,6 @@
     }
 
     body.is-menuopening & {
-        opacity:1;
-        z-index:11;
+        display:block;
     }
 }

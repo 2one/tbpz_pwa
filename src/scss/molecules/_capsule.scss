@@ -10,6 +10,15 @@
     	background-size:cover;
         background-position:center;
         background-color:$color-grey;
+        transition:height linear 0.25s;
+
+        @media (min-width:$bp-phone) {
+            height:300px;
+        }
+
+        @media (min-width:$bp-phablet) {
+            height:400px;
+        }
     }
 
     &__text {

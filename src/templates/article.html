@@ -14,7 +14,7 @@
             </div>
             <div class="capsule__image"
                  ng-if="article.type != 'page' && article.terms.category[0].name != 'NEWS'"
-                 ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
+                 ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.medium.url | secureUrl) +')'} : {}">
             </div>
         </div>
         <div class="paragraph"
