@@ -30,11 +30,11 @@
         <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="application-name" content="TBPZ">
         <meta name="theme-color" content="#222421">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
         <!-- _build:css inline style.css
-        <link rel="stylesheet" type="text/css" href="../dist/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../dist/css/style.css">
         /_build -->
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 
 	<body class="tpl-{{templatePage}}"
@@ -56,31 +56,17 @@
 
             <a href class="scrollTop js-scrollTop"
                ng-click="scrollToTop()"></a>
-
-            <a href class="bubble"
-               ng-class="{'is-active': isPlayerReady}"
-               ng-click="loadPlayer()"></a>
 		</div>
 
         <div class="loader"></div>
 
-        <section class="player"
-                 ng-class="{'is-active': isPlayerReady, 'is-reduced': isPlayerReduced}">
-            <span class="player__close fa fa-times-rectangle-o"
-                  ng-click="isPlayerReady = false;isPlayerReduced == false"></span>
-            <span class="player__expand fa fa-toggle-down"
-                  ng-hide="isPlayerReduced == true"
-                  ng-click="isPlayerReduced = true"></span>
-            <span class="player__compress fa fa-toggle-up"
-                  ng-hide="isPlayerReduced == false"
-                  ng-click="isPlayerReduced = false"></span>
-            <iframe ng-src="//thebackpackerz.com/player/?url=https://www.youtube.com/playlist?list=PLR_EFhHhjoEFEJoPr7Eoppp1PQ0av_atK&theme=dark"
-                    ng-if="isPlayerReady"
-                    width="100%" height="232" frameborder="0"></iframe>
-        </section>
+        <a href class="bubble"
+           ng-class="{'is-active': isPlayerReady}"
+           ng-click="loadPlayer()"></a>
+        <player-component></player-component>
 
-        <!-- _build:js inline app.js
-		<script src="../dist/js/app.js"></script>
+        <!-- _build:js inline script.js
+		<script src="../dist/js/script.js"></script>
         /_build -->
         <script src="./js/script.js"></script>
 	</body>

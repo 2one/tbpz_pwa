@@ -103,10 +103,6 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
         }
     };
 
-    /*$scope.reload = function() {
-        location.reload();
-    };*/
-
     $scope.copyLocation = function() {
         var textArea = document.createElement("textarea");
         textArea.value = location.href;
@@ -120,26 +116,6 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
         document.body.removeChild(textArea);
         $rootScope.isMenuopening = false;
     };
-
-    /*$scope.addToHomescreen = function() {
-        if (deferredPrompt !== undefined) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(function(choiceResult) {
-                console.log(choiceResult.outcome);
-                if (choiceResult.outcome == 'dismissed') {
-                    ga('send', 'event', 'add2homescreen_ko', 'click', 'prompt');
-                    console.log('User cancelled home screen install');
-                }
-                else {
-                    ga('send', 'event', 'add2homescreen_ok', 'click', 'prompt');
-                    console.log('User added to home screen');
-                }
-                deferredPrompt = null;
-                $scope.add2HomescreenReady = false;
-            });
-        }
-        $rootScope.isMenuopening = false;
-    };*/
 
     var windowHeight = $(window).height();
     var documentHeight = $document.height();

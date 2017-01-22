@@ -29,6 +29,9 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
             $rootScope.appReady = true;
             $rootScope.isSwitchingView = false;
             $scope.loadingNext = false;
+            $timeout(function() {
+                documentHeight = $document.height();
+            }, 0);
         }).catch(function(error) {
             console.warn(error);
             $rootScope.appReady = true;
@@ -38,7 +41,6 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
     };
     $scope.load();
 
-    var documentHeight = $document.height();
     $scope.infiniteScroll = function () {
         scrollTop = $document.scrollTop();
         if (scrollTop + 60 >= documentHeight - windowHeight && !$scope.loadingNext && $scope.page < 10 && $scope.templatePage == 'listing') {
