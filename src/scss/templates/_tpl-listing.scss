@@ -27,19 +27,46 @@
 
     .heading--1 {
         color:$color-red;
-        font-family:$font-title;
-        font-weight:700;
-        font-size:18px;
-        letter-spacing: -1px;
         text-align:center;
         background:$color-white;
         padding:10px 0;
 
         &:before {
-            content:'\f025';
             display:inline-block;
             font-family:'FontAwesome';
-            margin-right:5px;
+            margin-right:10px;
+        }
+
+        &.heading--home:before {
+            content:'\f0f7';
+        }
+
+        &.heading--dossier:before {
+            content:'\f02d';
+        }
+
+        &.heading--top10:before {
+            content:'\f1e2';
+        }
+
+        &.heading--chroniques:before {
+            content:'\f0a3';
+        }
+
+        &.heading--interviews:before {
+            content:'\f130';
+        }
+
+        &.heading--sons:before {
+            content:'\f025';
+        }
+
+        &.heading--news:before {
+            content:'\f1ea';
+        }
+
+        &.heading--lab:before {
+            content:'\f0c3';
         }
     }
 

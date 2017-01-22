@@ -31,9 +31,13 @@
     }
 
     &__list {
-        margin:60px 15px 0 15px;
+        margin:$height-header 15px 0 15px;
         padding:0;
         list-style:none;
+
+        @media (min-width:$bp-tablet) {
+            margin-top:$height-header-big;
+        }
     }
 
     &__item {
@@ -50,8 +54,47 @@
             text-decoration:none;
             color:#FFF;
             font-family:$font-title;
-            font-weight:900;
+            font-weight:700;
             text-transform: uppercase;
+
+            &:before {
+                display:inline-block;
+                font-family:'FontAwesome';
+                margin-right:10px;
+                font-weight:400;
+            }
+        }
+
+        &--home a:before {
+            content:'\f0f7';
+        }
+
+        &--dossier a:before {
+            content:'\f02d';
+        }
+
+        &--top10 a:before {
+            content:'\f1e2';
+        }
+
+        &--chroniques a:before {
+            content:'\f0a3';
+        }
+
+        &--interviews a:before {
+            content:'\f130';
+        }
+
+        &--sons a:before {
+            content:'\f025';
+        }
+
+        &--news a:before {
+            content:'\f1ea';
+        }
+
+        &--lab a:before {
+            content:'\f0c3';
         }
     }
 

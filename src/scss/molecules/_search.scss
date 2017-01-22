@@ -3,8 +3,8 @@
     z-index:3;
     width:100%;
     height:0;
-    box-sizing:border-box;
     overflow:hidden;
+    box-sizing:border-box;
     top:$height-header;
     left:0;
     background:linear-gradient(to right, $color-red, lighten($color-red, 15%));
