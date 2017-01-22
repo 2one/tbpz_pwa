@@ -1,12 +1,11 @@
 .banner {
     position:absolute;
-    display:flex;
     z-index:3;
     width:100%;
     box-sizing:border-box;
     top:-$height-header;
     left:0;
-    padding:12px 20px;
+    padding:12px 15px;
     color:$color-light;
     line-height:16px;
     background:rgba($color-dark, 0.9);
@@ -24,19 +23,13 @@
         }
     }
 
-    &__icon {
-        flex:1 0;
-        font-size:16px;
-    }
-
     &__text {
-        flex:10 0;
-        margin:0 5px;
-    }
 
-    &__reload {
-        flex:1 0;
-        font-size:16px;
-        color:$color-red;
+        &:before {
+            display:inline-block;
+            font-family:'FontAwesome';
+            content:'\f071';
+            margin-right:5px;
+        }
     }
 }

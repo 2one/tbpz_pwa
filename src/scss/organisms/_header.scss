@@ -1,13 +1,10 @@
 .header {
 	position:fixed;
-    display:flex;
-    align-items:center;
 	z-index:10;
 	width:100%;
 	height:$height-header;
 	top:0;
 	left:0;
-    padding:0 15px;
     box-sizing:border-box;
     background:$color-gradientred;
     text-align:center;
@@ -15,19 +12,44 @@
 
     @media (min-width:$bp-tablet) {
         height:$height-header-big;
-        padding:0 20px;
     }
 
     &__logo {
-        display:inline-block;
-        flex:1 0;
-        height:100%;
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
         background:url("/img/logo-white.svg") no-repeat center;
         background-size:auto 35%;
     }
 
+    &__left {
+        position: absolute;
+        z-index:1;
+        top:0;
+        left:15px;
+
+        @media (min-width:$bp-tablet) {
+            left:20px;
+        }
+    }
+
+    &__right {
+        position: absolute;
+        z-index:1;
+        top:0;
+        right:15px;
+
+        @media (min-width:$bp-tablet) {
+            right:20px;
+        }
+    }
+
     &__icon {
         display:inline-block;
+        line-height:$height-header;
+        vertical-align:middle;
         color:$color-white;
         font-size:22px;
         text-decoration:none;
@@ -35,6 +57,7 @@
 
         @media (min-width:$bp-tablet) {
             font-size:28px;
+            line-height:$height-header-big;
         }
 
         &:before {

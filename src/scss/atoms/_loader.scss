@@ -8,20 +8,18 @@
     }
 
     body.is-loading & {
-        display:flex;
-        align-items:center;
+        display:inline-block;
 
         &:before {
             display:inline-block;
-            flex:1 0;
-            font-size:32px;
-            font-family: FontAwesome;
+            font-size:40px;
+            font-family:'FontAwesome';
             content:'\f1ce';
             color:$color-red;
             animation:rotate360 1s linear infinite;
 
             @media (min-width:$bp-phone) {
-                font-size:48px;
+                font-size:60px;
             }
         }
     }
