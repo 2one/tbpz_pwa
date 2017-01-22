@@ -1,19 +1,6 @@
 .date {
     display:inline-block;
-    font-size:14px;
-    font-family:$font-text;
+    font-size:13px;
     color:$color-white;
-
-    &--formated {
-        word-spacing:30px;
-        text-transform:capitalize;
-
-        &:first-line {
-            font-size:1.4em;
-        }
-    }
-
-    @media (min-width:$bp-tablet) {
-        font-size:20px;
-    }
+    text-shadow:1px 1px 2px $color-black;
 }

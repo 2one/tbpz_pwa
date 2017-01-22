@@ -1,35 +1,29 @@
 <section class="container__grid">
     <article class="container__row"
         ng-if="article">
-        <div class="container__maincol">
-            <div class="container__maincolWrapper">
-                <div class="capsule">
-                    <div class="capsule__image"
-                         ng-if="article.type != 'page' && article.terms.category[0].name != 'NEWS'"
-                         ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
-                        <div ng-if="article.type != 'page'">
-                            <span class="tag">{{article.terms.category[0].name}}</span>
-                            <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
-                        </div>
-                    </div>
-                    <div class="capsule__text">
-                        <h2 class="heading heading--2"
-                            ng-if="article.title"
-                            ng-bind-html="article.title"></h2>
-                    </div>
+        <div class="capsule">
+            <div class="capsule__text">
+                <div ng-if="article.type != 'page'">
+                    <span class="author">Par {{article.author.name}}</span>
+                    <span class="tag">{{article.terms.category[0].name}}</span>
+                    <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
                 </div>
-
-                <div class="paragraph">
-                    <div class="article__share" ng-controller="ShareCtrl"
-                         ng-if="article.type != 'page'">
-                        <a href class="share share--tiny share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
-                        <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
-                        <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
-                    </div>
-                    <div
-                        ng-bind-html="article.content | parseContent"></div>
-                </div>
+                <h1 class="heading heading--1"
+                    ng-if="article.title"
+                    ng-bind-html="article.title"></h1>
             </div>
+            <div class="capsule__image"
+                 ng-if="article.type != 'page' && article.terms.category[0].name != 'NEWS'"
+                 ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.small.url | secureUrl) +')'} : {}">
+            </div>
+        </div>
+        <div class="paragraph"
+             ng-bind-html="article.content | parseContent"></div>
+        <div class="article__share" ng-controller="ShareCtrl"
+             ng-if="article.type != 'page'">
+            <a href class="share share--tiny share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
+            <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
+            <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
         </div>
     </article>
 </section>

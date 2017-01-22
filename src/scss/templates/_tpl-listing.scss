@@ -15,107 +15,14 @@
             margin-bottom:0;
             margin-top:20px;
         }
-    }
 
-    .container__maincol {
-        padding:0;
-        width:auto;
-        margin:0;
-        opacity:1;
-        transition:opacity linear 0.25s;
-
-        &Wrapper {
-            position:relative;
-            text-align:center;
-            padding:0;
-
-            &[ng-click] {
-                cursor:pointer;
-            }
+        &[ng-click] {
+            cursor:pointer;
         }
 
-        .paragraph {
-            padding:0 20px 10px 20px;
-            text-align:justify;
-            font-size:14px;
-            @media (min-width:$bp-phone) {
-                font-size:16px;
-            }
-
-            p {
-                margin:15px 0;
-            }
-
-            h3 {
-                margin:30px 0 15px 0;
-                color:$color-dark;
-                text-transform:uppercase;
-                font-family:$font-title;
-                font-weight:600;
-                font-style:italic;
-                text-align:left;
-                font-size:16px;
-            }
-
-            a {
-                color:$color-red;
-                font-weight:bold;
-                &:hover {
-                    text-decoration:none;
-                }
-            }
-
-            iframe {
-                margin:15px 0;
-                max-width:100%;
-            }
-
-            img, .wp-caption {
-                margin:15px 0;
-                max-width:100%;
-                height:initial;
-            }
-        }
-
-        .button {
-            margin-bottom:30px;
-        }
-
-        .media,
-        .embed,
-        .diaporama {
-            margin-top:25px;
-        }
-
-        .readmore {
-            margin-top:15px;
-        }
-
-        article.is-read & {
+        &.is-read {
             opacity:0.7;
         }
-
-        .article__share {
-            float:right;
-            margin-top:10px;
-
-            .share {
-                color:#FFF;
-                font-weight:normal;
-            }
-
-            @media (min-width:$bp-phone) {
-                display:none;
-            }
-        }
-
-    }
-
-    &__author {
-        font-style:italic;
-        margin:15px 0;
-        color:$color-dark;
-        font-size:15px;
     }
 
     &:after {
