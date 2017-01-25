@@ -12,10 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-<!-- build:template
-// <%=date%>
-var cacheName = 'TBPZPWA-<%=version%>';
-/build -->
+// /* @echo date */
+var cacheName = 'TBPZPWA-/* @echo version */';
 var filesToCache = [
     '/',
     '/index.html',

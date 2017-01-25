@@ -11,9 +11,10 @@ module.exports = function (gulp, plugins, options) {
             server: "dist"
         });
 
-        gulp.watch("src/**/*.html", ['html']);
-        gulp.watch("src/**/*.js", ['inlineScripts']);
-        gulp.watch("src/**/*.scss", ['inlineStyles']);
+        gulp.watch("src/index.html", ['html']);
+        gulp.watch("src/templates/**/*.html", ['preScripts']);
+        gulp.watch("src/js/**/*.js", ['preScripts']);
+        gulp.watch("src/scss/**/*.scss", ['styles']);
         gulp.watch("src/img/**", ['images']);
         gulp.watch("src/fonts/**", ['fonts']);
 

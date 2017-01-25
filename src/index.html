@@ -31,10 +31,7 @@
         <meta name="application-name" content="TBPZ">
         <meta name="theme-color" content="#222421">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-        <!-- _build:css inline style.css
-        <link rel="stylesheet" type="text/css" href="../dist/css/style.css">
-        /_build -->
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link inline rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 
 	<body class="tpl-{{templatePage}}"
@@ -65,9 +62,6 @@
            ng-click="loadPlayer()"></a>
         <player-component></player-component>
 
-        <!-- _build:js inline script.js
-		<script src="../dist/js/script.js"></script>
-        /_build -->
-        <script src="./js/script.js"></script>
+        <script inline src="./js/script.js"></script>
 	</body>
 </html>

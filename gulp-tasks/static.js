@@ -3,8 +3,8 @@ module.exports = function (gulp, plugins, options) {
         gulp.src(['src/.htaccess', 'src/manifest.json'])
             .pipe(gulp.dest('dist'));
         gulp.src(['src/sw.js'])
-            .pipe(plugins.processhtml({
-                data: {
+            .pipe(plugins.preprocess({
+                context: {
                     date: new Date().toISOString(),
                     version: options.package.version
                 }

@@ -9,7 +9,7 @@ ngTouch = require('angular-touch');
 require('angular-i18n/angular-locale_fr-fr');
 
 // CONFIG
-config = require('./config.js');
+config = require('../../dist/js/config.js');
 
 // ANGULAR SETUP
 var app = angular.module('app', [ngRoute, ngSanitize, ngTouch]);
@@ -27,6 +27,7 @@ app.controller('ShareCtrl', require('./angular/controllers/share.js'));
 app.filter('parseContent', require('./angular/filters/parseContent.js'));
 app.filter('secureUrl', require('./angular/filters/secureUrl.js'));
 require('./angular/app.js')();
+require('../../dist/js/templates.js');
 
 // ANALYTICS TAG
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -10,6 +10,5 @@ module.exports = function (gulp, plugins, options) {
             .pipe(plugins.sourcemaps.write('.'))
             .pipe(gulp.dest('dist/js'))
             .on('end', cb);
-        //gulp.start('inline');
     };
 };

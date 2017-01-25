@@ -1,7 +1,9 @@
 module.exports = function() {
 
     angular.module('app').config(['$locationProvider', '$routeProvider', '$sceProvider', function($locationProvider, $routeProvider, $sceProvider) {
-        $locationProvider.html5Mode(true).hashPrefix('!');
+        if (config.html5mode) {
+            $locationProvider.html5Mode(true).hashPrefix('!');
+        }
         $sceProvider.enabled(false);
 
         $routeProvider.

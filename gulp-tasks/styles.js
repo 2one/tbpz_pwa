@@ -4,10 +4,13 @@ module.exports = function (gulp, plugins, options) {
             .pipe(plugins.sourcemaps.init())
                 .pipe(plugins.sass())
                 .pipe(plugins.autoprefixer())
-                .pipe(plugins.if(options.minify, plugins.cssnano()))
+                .pipe(plugins.if(options.minify, plugins.cssnano({
+                    discardComments: {
+                        removeAll: true
+                    }
+                })))
             .pipe(plugins.sourcemaps.write('.'))
             .pipe(gulp.dest('dist/css'))
             .on('end', cb);
-        //gulp.start('inline');
     };
 };
