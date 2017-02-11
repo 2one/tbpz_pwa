@@ -5,25 +5,6 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
 
     $scope.searchQuery = '';
 
-    $scope.dateToTimestamp = function(date, locale) {
-        if (date) {
-            if (locale == 'fr') {
-                var year = date.substr(6, 4);
-                var month = parseInt(date.substr(3, 2)) - 1;
-                var day = date.substr(0, 2);
-            } else {
-                var year = date.substr(0, 4);
-                var month = parseInt(date.substr(5, 2)) - 1;
-                var day = date.substr(8, 2);
-            }
-            var hours = date.substr(11, 2);
-            var minutes = date.substr(14, 2);
-            var seconds = date.substr(17, 2);
-            var milliseconds = '000';
-            return Math.round(new Date(year, month, day, hours, minutes, seconds, milliseconds));
-        }
-    };
-
     $scope.openNav = function() {
         $rootScope.isSearching = false;
         $rootScope.isMenuopening = false;
@@ -81,7 +62,7 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
     };
 
     $scope.scrollToTop = function($event) {
-        jQuery("html, body").animate({scrollTop:0}, 'slow');
+        angular.element("html, body").animate({scrollTop:0}, 'slow');
     };
 
     $scope.search = function() {

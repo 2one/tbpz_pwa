@@ -23,6 +23,7 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
             });
         } else {
             $scope.article = datas;
+            $rootScope.pageTitle = $scope.article.title;
             console.log("article:", $scope.article);
         }
         $rootScope.appReady = true;

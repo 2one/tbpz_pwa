@@ -26,6 +26,9 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
             }
             $scope.articles = $scope.articles.concat(datas);
             console.log("articles:", $scope.articles);
+            if (categorySlug && $scope.page) {
+                $rootScope.pageTitle = $scope.articles[0].terms.category[0].name + ' | The BackPackerz';
+            }
             $rootScope.appReady = true;
             $rootScope.isSwitchingView = false;
             $scope.loadingNext = false;

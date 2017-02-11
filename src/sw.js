@@ -27,7 +27,9 @@ var filesToCache = [
     '/img/favicon-16x16.png',
     '/img/favicon-32x32.png',
     '/img/logo-white.svg',
-    '/img/apple-touch-icon.png'
+    '/img/apple-touch-icon.png',
+    '/img/logo.png',
+    '/img/logo-white.svg'
 ];
 
 self.addEventListener('install', function(e) {

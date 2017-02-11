@@ -13,13 +13,6 @@
     vertical-align:top;
     cursor:pointer;
 
-    &--tiny {
-        line-height:24px;
-        height:24px;
-        padding:0 5px;
-        font-size:12px;
-    }
-
     &:first-child {
         margin-left:0;
     }
@@ -80,6 +73,26 @@
         }
         &:hover {
             background-color:rgba(#d44132, 0.9);
+        }
+    }
+
+    &--tiny {
+        line-height:24px;
+        height:24px;
+        padding:0 5px;
+        font-size:12px;
+    }
+
+    &--half {
+        box-sizing: border-box;
+        width:50%;
+        float:left;
+        margin:0;
+        border-radius:0;
+        font-size:11px;
+
+        &:before {
+            display:none;
         }
     }
 

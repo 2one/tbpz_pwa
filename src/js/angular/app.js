@@ -60,7 +60,7 @@ module.exports = function() {
         });
     }]);
 
-    angular.module('app').run(['$rootScope', '$http', '$templateCache', function($scope, $rootScope, $http, $templateCache) {
+    angular.module('app').run(['$rootScope', '$http', function($scope, $rootScope, $http) {
 
         $scope.config = config;
         $scope.appReady = false;
@@ -78,10 +78,18 @@ module.exports = function() {
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
             $scope.slug = current.$$route.slug;
             $scope.templatePage = current.$$route.templatePage;
+            $scope.pageTitle = '';
+            setTimeout(function () {
+                angular.element("link[rel='canonical']").attr("href", document.location.href);
+                angular.element("meta[property='og:url']").attr("content", document.location.href);
+                angular.element("title").text($scope.pageTitle || "The BackPackerz | Blog Rap et Culture Hip-Hop");
+                angular.element("meta[property='og:title']").attr("content", $scope.pageTitle || "The BackPackerz | Blog Rap et Culture Hip-Hop");
+                angular.element("meta[property='og:image']").attr("content", $scope.pageImage || "http://thebackpackerz.com/wp-content/uploads/2015/05/nouvelle-version-the-backpackerz-cover.jpg");
+            }, 200);
         });
 
-        $scope.$on('$routeChangeError', function (event, current, previous) {
-        });
+        /*$scope.$on('$routeChangeError', function (event, current, previous) {
+        });*/
 
 	}]);
 

@@ -42,7 +42,6 @@
     "start": "gulp serve --env=local",
     "build": "gulp clean && gulp build --minify --env=remote",
     "bundle": "gulp clean && gulp build --minify --env=remote && gulp inlineSources",
-    "postinstall": "npm run build",
     "lint:es": "eslint src/js",
     "lint:sass": "sass-lint src/**/*.scss -v",
     "lint:html": "htmlhint src/**/*.html",

@@ -6,14 +6,14 @@
                 <div ng-if="article.type != 'page'">
                     <span class="author">Par {{article.author.name}}</span>
                     <span class="tag">{{article.terms.category[0].name}}</span>
-                    <span class="date">{{dateToTimestamp(article.date) | date:'mediumDate'}}</span>
+                    <span class="date">{{article.date | date:'mediumDate'}}</span>
                 </div>
                 <h1 class="heading heading--1"
                     ng-if="article.title"
                     ng-bind-html="article.title"></h1>
             </div>
             <div class="capsule__image"
-                 ng-if="article.type != 'page' && article.terms.category[0].name != 'NEWS'"
+                 ng-if="article.type != 'page' && article.format != 'audio' && article.format != 'video'"
                  ng-style="(article.featured_image.source) ? {'background-image':'url('+ (article.featured_image.attachment_meta.sizes.medium.url | secureUrl) +')'} : {}">
             </div>
         </div>
@@ -21,9 +21,14 @@
              ng-bind-html="article.content | parseContent"></div>
         <div class="article__share" ng-controller="ShareCtrl"
              ng-if="article.type != 'page'">
-            <a href class="share share--tiny share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
-            <a href class="share share--tiny share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>
-            <a href class="share share--tiny share--google" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('google')"></a>
+            <a href class="share share--half share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')"
+               ng-click="share('facebook')">
+                Partager sur Facebook
+            </a>
+            <a href class="share share--half share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')"
+               ng-click="share('twitter')">
+                Partager sur Twitter
+            </a>
         </div>
     </article>
 </section>

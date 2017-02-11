@@ -6,8 +6,7 @@
     left:-105%;
     width:260px;
     height:100%;
-    background:$color-gradientred;
-    background:rgba($color-red, 0.9);
+    background:rgba($color-red, 0.95);
     transition:left 0.25s;
 
     &:after {
