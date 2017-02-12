@@ -7,6 +7,22 @@ ngRoute = require('angular-route');
 ngSanitize = require('angular-sanitize');
 ngTouch = require('angular-touch');
 require('angular-i18n/angular-locale_fr-fr');
+require('browsernizr/test/battery/lowbattery');
+require('browsernizr/test/fullscreen-api');
+require('browsernizr/test/geolocation');
+require('browsernizr/test/hiddenscroll');
+require('browsernizr/test/inputtypes');
+require('browsernizr/test/intl');
+require('browsernizr/test/vibration');
+require('browsernizr/test/serviceworker');
+require('browsernizr/test/notification');
+require('browsernizr/test/storage/localstorage');
+require('browsernizr/test/storage/sessionstorage');
+require('browsernizr/test/css/flexbox');
+require('browsernizr/test/css/will-change');
+require('browsernizr/test/css/valid');
+require('browsernizr/test/css/invalid');
+Modernizr = require("browsernizr");
 
 // CONFIG
 config = require('../../dist/js/config.js');

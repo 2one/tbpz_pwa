@@ -12,6 +12,7 @@
         <a href class="header__icon header__icon--glass"
            ng-click="toggleSearch()"></a>
         <a href class="header__icon header__icon--settings"
+           ng-if="Modernizr.serviceworker"
            ng-click="toggleMenu()">
         </a>
     </div>

@@ -63,6 +63,7 @@ module.exports = function() {
     angular.module('app').run(['$rootScope', '$http', function($scope, $rootScope, $http) {
 
         $scope.config = config;
+        $scope.Modernizr = Modernizr;
         $scope.appReady = false;
         $scope.isSwitchingView = false;
         $scope.isNavigating = false;
