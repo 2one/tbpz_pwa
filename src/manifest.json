@@ -1,6 +1,6 @@
 {
   "name": "The BackPackerz",
-  "short_name": "TBPZ",
+  "short_name": "The BackPackerz",
   "icons": [{
     "src": "./img/apple-touch-icon.png",
       "sizes": "128x128",
@@ -23,7 +23,7 @@
       "type": "image/png"
     }],
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#222421",
-  "theme_color": "#222421"
+  "display": "minimal-ui",
+  "background_color": "#B92B2B",
+  "theme_color": "#B92B2B"
 }

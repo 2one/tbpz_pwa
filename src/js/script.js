@@ -40,9 +40,20 @@ m.parentNode.insertBefore(a,m);
 ga('create', 'UA-47284909-1', 'thebackpackerz.com');
 ga('send', 'pageview');
 
+// FB API
+window.fbAsyncInit = function() {
+    FB.init({appId: '630483397057569', status: true, cookie: true, xfbml: true});
+};
+(function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+        '//connect.facebook.net/fr_FR/all.js';
+    document.getElementById('fb-root').appendChild(e);
+}());
+
 // SERVICE WORKER SETUP
 if ('serviceWorker' in navigator) {
-    //navigator.serviceWorker.register('./sw.js');
+    navigator.serviceWorker.register('./sw.js');
 
     window.addEventListener('beforeinstallprompt', function(e) {
         e.userChoice.then(function(choiceResult) {

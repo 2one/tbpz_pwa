@@ -1,3 +1,6 @@
+Header append Vary User-Agent
+RequestHeader set X-Prerender-Token "BCbN5LtuG5yuHtM8hkth"
+
 RewriteEngine on
 
 RewriteCond %{HTTPS} !on

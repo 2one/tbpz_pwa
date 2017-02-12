@@ -69,6 +69,10 @@ module.exports = function() {
         $scope.isSearching = false;
         $scope.loadingNext = false;
 
+        var defaultPageTitle = angular.element("title").text(),
+            defaultPageDescription = angular.element("meta[name='description']").attr("content"),
+            defaultPageImage = angular.element("meta[property='og:image']").attr("content");
+
         $scope.$on('$routeChangeStart', function (event, current, previous) {
             $scope.isNavigating = false;
             $scope.isSearching = false;
@@ -80,11 +84,13 @@ module.exports = function() {
             $scope.templatePage = current.$$route.templatePage;
             $scope.pageTitle = '';
             setTimeout(function () {
-                angular.element("link[rel='canonical']").attr("href", document.location.href);
-                angular.element("meta[property='og:url']").attr("content", document.location.href);
-                angular.element("title").text($scope.pageTitle || "The BackPackerz | Blog Rap et Culture Hip-Hop");
-                angular.element("meta[property='og:title']").attr("content", $scope.pageTitle || "The BackPackerz | Blog Rap et Culture Hip-Hop");
-                angular.element("meta[property='og:image']").attr("content", $scope.pageImage || "http://thebackpackerz.com/wp-content/uploads/2015/05/nouvelle-version-the-backpackerz-cover.jpg");
+                var canonicalUrl = document.location.href.replace('app.thebackpackerz.com', 'thebackpackerz.com');
+                angular.element("link[rel='canonical']").attr("href", canonicalUrl);
+                angular.element("meta[property='og:url']").attr("content", canonicalUrl);
+                angular.element("title").text($scope.pageTitle || defaultPageTitle);
+                angular.element("meta[property='og:title']").attr("content", $scope.pageTitle || defaultPageTitle);
+                angular.element("meta[property='og:image']").attr("content", $scope.pageImage || defaultPageImage);
+                angular.element("meta[name='description'], meta[property='og:description']").attr("content", $scope.pageDescription || defaultPageDescription);
             }, 200);
         });
 

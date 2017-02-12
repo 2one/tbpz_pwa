@@ -23,8 +23,10 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
             });
         } else {
             $scope.article = datas;
-            $rootScope.pageTitle = $scope.article.title;
             console.log("article:", $scope.article);
+            $rootScope.pageTitle = angular.element('<textarea />').html($scope.article.title).text();
+            $rootScope.pageDescription = $scope.article.excerpt.replace(/(<([^>]+)>)/ig,"");
+            $rootScope.pageImage = $scope.article.featured_image.attachment_meta.sizes.medium.url;
         }
         $rootScope.appReady = true;
         $rootScope.isSwitchingView = false;
