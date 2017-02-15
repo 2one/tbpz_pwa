@@ -1,13 +1,13 @@
 <div class="toaster"
      ng-controller="ShareCtrl">
     <a class="toaster__close fa fa-times-rectangle-o"
-    ng-click="closeToaster()"></a>
-    <a class="toaster__item" href="sms:?&body=test"
-       ng-click="document.location.href = 'sms:?&body=' + document.location.href"><span class="fa fa-comment"></span></a>
+        ng-click="closeToaster()"></a>
     <a class="toaster__item"
-       ng-click="document.location.href = 'mailto:?body=' + document.location.href"><span class="fa fa-envelope"></span></a>
+       ng-href="sms:?&body={{href}}"><span class="fa fa-comment"></span></a>
+    <a class="toaster__item"
+       ng-href="mailto:?body={{href}}"><span class="fa fa-envelope"></span></a>
     <a class="toaster__item"
        ng-click="share('facebook')"><span class="fa fa-facebook-square"></span></a>
     <a class="toaster__item"
-        ng-click="document.location.href = 'twitter://post?message=' + document.location.href"><span class="fa fa-twitter-square"></span></a>
+        ng-href="twitter://post?message={{href}}"><span class="fa fa-twitter-square"></span></a>
 </div>

@@ -1,10 +1,11 @@
 module.exports = function() {
 
-    angular.module('app').config(['$locationProvider', '$routeProvider', '$sceProvider', function($locationProvider, $routeProvider, $sceProvider) {
+    angular.module('app').config(['$locationProvider', '$routeProvider', '$sceProvider', '$compileProvider', function($locationProvider, $routeProvider, $sceProvider, $compileProvider) {
         if (config.html5mode) {
             $locationProvider.html5Mode(true).hashPrefix('!');
         }
         $sceProvider.enabled(false);
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(sms|mailto|twitter):/);
 
         $routeProvider.
         when('/', {
@@ -86,6 +87,7 @@ module.exports = function() {
             $scope.slug = current.$$route.slug;
             $scope.templatePage = current.$$route.templatePage;
             $scope.pageTitle = '';
+            $scope.href = document.location.href;
             setTimeout(function () {
                 var canonicalUrl = document.location.href.replace('app.thebackpackerz.com', 'thebackpackerz.com');
                 angular.element("link[rel='canonical']").attr("href", canonicalUrl);
