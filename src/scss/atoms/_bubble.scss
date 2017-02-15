@@ -36,4 +36,8 @@
     &.is-active {
         opacity:0;
     }
+
+    body.is-toasting & {
+        opacity:0;
+    }
 }

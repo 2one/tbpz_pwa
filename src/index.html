@@ -35,7 +35,7 @@
 	</head>
 
 	<body class="tpl-{{templatePage}}"
-          ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-offline': isOffline, 'is-playing': isPlaying}"
+          ng-class="{'is-ready': (appReady), 'is-loading': (isSwitchingView), 'is-navigating': isNavigating, 'is-searching': isSearching, 'is-menuopening': isMenuopening, 'is-toasting': isToasting, 'is-offline': isOffline, 'is-playing': isPlaying}"
           ng-swipe-left="closeNav()"
           ng-swipe-right="openNav()">
 
@@ -56,6 +56,8 @@
             <a href class="scrollTop js-scrollTop"
                ng-click="scrollToTop()"></a>
 		</div>
+
+        <toaster-component></toaster-component>
 
         <div class="loader"></div>
 

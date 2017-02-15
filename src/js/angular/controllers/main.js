@@ -28,11 +28,13 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
         }
         $rootScope.isSearching = false;
         $rootScope.isMenuopening = false;
+        $rootScope.isToasting = false;
     };
 
     $scope.toggleSearch = function() {
         $rootScope.isNavigating = false;
         $rootScope.isMenuopening = false;
+        $rootScope.isToasting = false;
         $rootScope.isSearching = $rootScope.isSearching ? false : true;
         if ($rootScope.isSearching) {
             angular.element('#searchInput').focus();
@@ -45,6 +47,7 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
         $rootScope.isNavigating = false;
         $rootScope.isSearching = false;
         $rootScope.isMenuopening = $rootScope.isMenuopening ? false : true;
+        $rootScope.isToasting = false;
     };
 
     $scope.go = function(path, $event) {
@@ -84,18 +87,13 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
         }
     };
 
-    $scope.copyLocation = function() {
-        var textArea = document.createElement("textarea");
-        textArea.value = location.href;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-        } catch (error) {
-            console.log(error);
-        }
-        document.body.removeChild(textArea);
+    $scope.openToaster = function() {
+        $rootScope.isToasting = true;
         $rootScope.isMenuopening = false;
+    };
+
+    $scope.closeToaster = function() {
+        $rootScope.isToasting = false;
     };
 
     var windowHeight = $(window).height();

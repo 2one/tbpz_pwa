@@ -1,6 +1,6 @@
 {
   "name": "tbpz_app",
-  "version": "0.2.6",
+  "version": "0.2.10",
   "author": "Raphaël Dardeau <r.dardeau@gmail.com>",
   "dependencies": {
     "angular": "1.6.x",

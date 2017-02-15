@@ -68,6 +68,7 @@ module.exports = function() {
         $scope.isSwitchingView = false;
         $scope.isNavigating = false;
         $scope.isSearching = false;
+        $scope.isToasting = false;
         $scope.loadingNext = false;
 
         var defaultPageTitle = angular.element("title").text(),
@@ -78,6 +79,7 @@ module.exports = function() {
             $scope.isNavigating = false;
             $scope.isSearching = false;
             $scope.isMenuopening = false;
+            $scope.isToasting = false;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {

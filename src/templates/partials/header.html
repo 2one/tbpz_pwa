@@ -12,7 +12,6 @@
         <a href class="header__icon header__icon--glass"
            ng-click="toggleSearch()"></a>
         <a href class="header__icon header__icon--settings"
-           ng-if="Modernizr.serviceworker"
            ng-click="toggleMenu()">
         </a>
     </div>
@@ -26,8 +25,9 @@
 
     <ul class="menu">
         <li class="menu__item"
-            ng-click="copyLocation()">Copier l'adresse de la page</li>
+            ng-click="openToaster()">Partager la page</li>
         <li class="menu__item"
+            ng-if="Modernizr.serviceworker"
             ng-click="go('/page/settings')">Paramètres</li>
     </ul>
 </header>

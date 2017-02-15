@@ -33,6 +33,7 @@ app.service('datasSce', require('./angular/services/datas.js'));
 app.directive('bannerComponent', require('./angular/directives/banner.js'));
 app.directive('headerComponent', require('./angular/directives/header.js'));
 app.directive('navComponent', require('./angular/directives/nav.js'));
+app.directive('toasterComponent', require('./angular/directives/toaster.js'));
 app.directive('playerComponent', require('./angular/directives/player.js'));
 app.controller('ArticleCtrl', require('./angular/controllers/article.js'));
 app.controller('ArticlesCtrl', require('./angular/controllers/articles.js'));
