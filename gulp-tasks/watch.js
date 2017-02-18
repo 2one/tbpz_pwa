@@ -8,7 +8,11 @@ module.exports = function (gulp, plugins, options) {
                 "dist/img/**",
                 "dist/fonts/**"
             ],
-            server: "dist"
+            server: "dist",
+            https: {
+                key: "openssl/server.key",
+                cert: "openssl/server.crt"
+            }
         });
 
         gulp.watch("src/index.html", ['html']);

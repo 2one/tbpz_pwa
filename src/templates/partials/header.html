@@ -25,9 +25,10 @@
 
     <ul class="menu">
         <li class="menu__item"
+            ng-if="Modernizr.touchevents"
             ng-click="openToaster()">Partager la page</li>
         <li class="menu__item"
-            ng-if="Modernizr.serviceworker"
+            ng-if="Modernizr.notification"
             ng-click="go('/page/settings')">Paramètres</li>
     </ul>
 </header>

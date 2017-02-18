@@ -23,7 +23,11 @@ var config = {
         page: "//secure.thebackpackerz.com/wp-json/posts?type=page&filter[name]={slug}",
         singlepost: "//secure.thebackpackerz.com/wp-json/posts/{ID}",
         nav: "//secure.thebackpackerz.com/wp-json/posts/types/posts/taxonomies/category/terms"
-    }
+    },
 // @endif
+    notification: {
+        publicKey: 'BGNeWjvWTQ7VutGHgNYY9bQDazwrLysOysycwNV-2aZp5EJjcsarZsinanCsDUfkfcLLRHbYThheRVFlMo4vIIU',
+        //privateKey: 'BGNeWjvWTQ7VutGHgNYY9bQDazwrLysOysycwNV-2aZp5EJjcsarZsinanCsDUfkfcLLRHbYThheRVFlMo4vIIU',
+    }
 };
 module.exports = config;
