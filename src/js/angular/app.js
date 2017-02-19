@@ -50,6 +50,12 @@ module.exports = function() {
             templateUrl: config.viewsPath +'error.html',
             controller: 'ErrorCtrl'
         }).
+        when('/error', {
+            slug: 'error',
+            templatePage: 'error',
+            templateUrl: config.viewsPath +'error.html',
+            controller: 'ErrorCtrl'
+        }).
         when('/:articleSlug', {
             slug: 'article',
             templatePage: 'single',
@@ -57,7 +63,7 @@ module.exports = function() {
             controller: 'ArticleCtrl'
         }).
         otherwise({
-            redirectTo: '/error/404'
+            redirectTo: '/error'
         });
     }]);
 

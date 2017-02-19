@@ -25,6 +25,10 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
             }
             $scope.articles = $scope.articles.concat(datas);
             console.log("articles:", $scope.articles);
+            if (!$scope.articles.length && $scope.page == 1) {
+                $scope.go('/error/404');
+                return;
+            }
             if (categorySlug && $scope.page) {
                 $rootScope.pageTitle = $scope.articles[0].terms.category[0].name + ' | The BackPackerz';
             }
@@ -38,6 +42,11 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
             console.warn(error);
             $rootScope.appReady = true;
             $rootScope.isSwitchingView = false;
+
+            if (!navigator.onLine && $scope.page == 1) {
+                $scope.go('/error');
+                return;
+            }
         });
     };
     $scope.load();

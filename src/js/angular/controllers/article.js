@@ -18,6 +18,11 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
                 console.warn(error);
                 $rootScope.appReady = true;
                 $rootScope.isSwitchingView = false;
+
+                if (!navigator.onLine) {
+                    $scope.go('/error');
+                    return;
+                }
             });
         } else {
             $scope.article = datas;
@@ -33,6 +38,11 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
         console.warn(error);
         $rootScope.appReady = true;
         $rootScope.isSwitchingView = false;
+
+        if (!navigator.onLine) {
+            $scope.go('/error');
+            return;
+        }
     });
 
 };
