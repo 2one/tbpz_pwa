@@ -18,14 +18,9 @@ module.exports = function($scope) {
                     picture: image,
                     description: description
                 });
-                //shareUrl = "http://www.facebook.com/sharer.php?s=100&p[title]="+ encodeURIComponent(title) +"&p[url]=" + encodeURIComponent(canonicalUrl) +"&p[images][0]="+ image +"&p[summary]=" + encodeURIComponent(description);
             break;
             case 'twitter':
                 shareUrl = "https://twitter.com/share?url=" + encodeURIComponent(canonicalUrl) + "&text=" + encodeURIComponent(title) + "&via=thebackpackerz";
-                window.open(shareUrl, provider, "width="+ popupWidth +",height="+ popupHeight +",left=0,top=0");
-            break;
-            case 'google':
-                shareUrl = "https://plus.google.com/share?url=" + encodeURIComponent(canonicalUrl);
                 window.open(shareUrl, provider, "width="+ popupWidth +",height="+ popupHeight +",left=0,top=0");
             break;
         }

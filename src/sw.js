@@ -75,3 +75,27 @@ self.addEventListener('fetch', function(e) {
         })
     );
 });
+
+self.addEventListener('push', function(event) {
+    //console.log('[Service Worker] Push Received.');
+    //console.log('[Service Worker] Push had this data: "${event.data.text()}"');
+
+    title = 'Push TBPZ';
+    options = {
+        body: 'Whats up.',
+        icon: '/img/favicon.ico',
+        badge: '/img/logo-white.svg'
+    };
+
+    event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', function(event) {
+    console.log('[Service Worker] Notification click Received.');
+
+    event.notification.close();
+
+    event.waitUntil(
+        clients.openWindow('https://app.thebackpackerz.com')
+    );
+});

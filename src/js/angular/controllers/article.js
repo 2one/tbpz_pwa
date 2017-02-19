@@ -1,6 +1,5 @@
 module.exports = function($scope, $rootScope, $routeParams, datasSce) {
 
-    $scope.setNetwork();
     $rootScope.isSwitchingView = true;
     datasSce.getArticleBySlug($routeParams.articleSlug).then(function (datas) {
         if (!datas) {
@@ -19,7 +18,6 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
                 console.warn(error);
                 $rootScope.appReady = true;
                 $rootScope.isSwitchingView = false;
-                $scope.setNetwork();
             });
         } else {
             $scope.article = datas;
@@ -35,7 +33,6 @@ module.exports = function($scope, $rootScope, $routeParams, datasSce) {
         console.warn(error);
         $rootScope.appReady = true;
         $rootScope.isSwitchingView = false;
-        $scope.setNetwork();
     });
 
 };

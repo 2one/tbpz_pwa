@@ -1,8 +1,9 @@
 <div class="checklist">
     <div class="checklist__item"
+         ng-controller="PushCtrl"
          ng-if="Modernizr.notification">
         <input type="checkbox" name="push" class="checkbox checklist__box" id="pushButton"
-            ng-click="setPushButton($event)"/>
+            ng-click="setSubscription($event)"/>
         <h3 class="checklist__title heading heading--3">Notifications</h3>
         <span class="checklist__description paragraph">S'abonner aux alertes TheBackpackerz</span>
     </div>

@@ -7,7 +7,6 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
         tagSlug = ($routeParams.tagSlug) ? $routeParams.tagSlug : '',
         searchQuery = ($routeParams.searchQuery) ? $routeParams.searchQuery : '';
 
-    $scope.setNetwork();
     $rootScope.isSwitchingView = true;
     $scope.page = 1;
     $scope.order = '-date';
@@ -39,7 +38,6 @@ module.exports = function($scope, $rootScope, $routeParams, $timeout, $document,
             console.warn(error);
             $rootScope.appReady = true;
             $rootScope.isSwitchingView = false;
-            $scope.setNetwork();
         });
     };
     $scope.load();

@@ -1,4 +1,4 @@
-module.exports = function($scope, $rootScope, $location, $document, $window) {
+module.exports = function($scope, $rootScope, $location, $document, $window, $interval) {
 
     var items,
         dataPromise = {};
@@ -86,6 +86,9 @@ module.exports = function($scope, $rootScope, $location, $document, $window) {
             $scope.isOffline = false;
         }
     };
+    $interval(function() {
+        $scope.setNetwork();
+    }, 5000);
 
     $scope.openToaster = function() {
         $rootScope.isToasting = true;

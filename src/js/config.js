@@ -28,6 +28,13 @@ var config = {
     notification: {
         publicKey: 'BGNeWjvWTQ7VutGHgNYY9bQDazwrLysOysycwNV-2aZp5EJjcsarZsinanCsDUfkfcLLRHbYThheRVFlMo4vIIU',
         //privateKey: 'BGNeWjvWTQ7VutGHgNYY9bQDazwrLysOysycwNV-2aZp5EJjcsarZsinanCsDUfkfcLLRHbYThheRVFlMo4vIIU',
+    },
+    firebase: {
+        apiKey: "AIzaSyBmNDGP6aNpzAK0QUFgxrxfel2trLphKxA",
+        authDomain: "the-backpackerz.firebaseapp.com",
+        databaseURL: "https://the-backpackerz.firebaseio.com",
+        storageBucket: "the-backpackerz.appspot.com",
+        messagingSenderId: "557388743142"
     }
 };
 module.exports = config;
