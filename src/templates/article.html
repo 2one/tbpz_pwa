@@ -5,7 +5,7 @@
             <div class="capsule__text">
                 <div ng-if="article.type != 'page'">
                     <span class="author">Par {{article.author.name}}</span>
-                    <span class="tag">{{article.terms.category[0].name}}</span>
+                    <span class="tag" ng-click="go('/category/' + article.terms.category[0].slug + '/', $event)">{{article.terms.category[0].name}}</span>
                     <span class="date">{{article.date | date:'mediumDate'}}</span>
                 </div>
                 <h1 class="heading heading--1"
