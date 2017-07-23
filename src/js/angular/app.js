@@ -77,6 +77,7 @@ module.exports = function() {
         $scope.isSearching = false;
         $scope.isToasting = false;
         $scope.loadingNext = false;
+        $scope.autoscroll = true;
 
         var defaultPageTitle = angular.element("title").text(),
             defaultPageDescription = angular.element("meta[name='description']").attr("content"),
@@ -87,6 +88,7 @@ module.exports = function() {
             $scope.isSearching = false;
             $scope.isMenuopening = false;
             $scope.isToasting = false;
+            $scope.refererObj = previous;
         });
 
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {

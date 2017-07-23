@@ -17,7 +17,8 @@ module.exports = function($scope, $rootScope, $location, $document, $window, $in
 
     $scope.toggleNav = function() {
         if ($rootScope.templatePage == 'single') {
-            if (document.referrer.indexOf(document.location.origin) === 0) {
+            //$rootScope.autoscroll = false;
+            if (document.referrer.indexOf(document.location.origin) === 0 || $rootScope.refererObj) {
                 $window.history.back();
             } else {
                 $scope.go('/');

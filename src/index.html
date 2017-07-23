@@ -50,7 +50,7 @@
 		<div class="container">
 			<section class="container__view"
                      ng-view
-                     autoscroll="true">
+                     autoscroll="autoscroll">
 			</section>
 
             <a href class="scrollTop js-scrollTop"
@@ -61,9 +61,9 @@
 
         <div class="loader"></div>
 
-        <a href class="bubble"
+        <!--<a href class="bubble"
            ng-class="{'is-active': isPlayerReady}"
-           ng-click="loadPlayer()"></a>
+           ng-click="loadPlayer()"></a>-->
         <player-component></player-component>
 
         <script inline src="./js/script.js"></script>
