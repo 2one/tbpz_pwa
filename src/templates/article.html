@@ -10,7 +10,7 @@
                 </div>
                 <h1 class="heading heading--1"
                     ng-if="article.title"
-                    ng-bind-html="article.title"></h1>
+                    ng-bind-html="article.title | clearBracket"></h1>
             </div>
             <div class="capsule__image"
                  ng-if="article.type != 'page' && article.format != 'audio' && article.format != 'video'"

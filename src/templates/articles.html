@@ -16,7 +16,7 @@
             <div class="capsule__text">
                 <h2 class="heading heading--2"
                     ng-if="article.title"
-                    ng-bind-html="article.title"></h2>
+                    ng-bind-html="article.title | clearBracket"></h2>
             </div>
         </div>
     </article>

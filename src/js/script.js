@@ -43,6 +43,7 @@ app.controller('ShareCtrl', require('./angular/controllers/share.js'));
 app.controller('PushCtrl', require('./angular/controllers/push.js'));
 app.filter('parseContent', require('./angular/filters/parseContent.js'));
 app.filter('secureUrl', require('./angular/filters/secureUrl.js'));
+app.filter('clearBracket', require('./angular/filters/clearBracket.js'));
 require('./angular/app.js')();
 require('../../dist/js/templates.js');
 
